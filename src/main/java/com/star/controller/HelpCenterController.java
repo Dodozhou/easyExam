@@ -5,6 +5,7 @@ import com.star.entity.StudyAid;
 import com.star.entity.User;
 import com.star.repository.HelpAidRepository;
 import com.star.repository.StudyAidRepository;
+import com.star.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,8 @@ public class HelpCenterController {
     HelpAidRepository helpRepository;
     @Autowired
     StudyAidRepository studyRepository;
+    @Autowired
+    DateUtil dateUtil;
 
     @RequestMapping("/help_center")
     public String centerPage(Model model, HttpServletRequest request){
@@ -44,6 +47,10 @@ public class HelpCenterController {
     public String helpUp(HelpAid new_help,@RequestParam("login_id") int login_id){
         new_help.setPubId(login_id);
         helpRepository.save(new_help);
+        new_help.setViewNumb(1);
+        new_help.setCommentNumb(0);
+        new_help.setPraiseNumb(0);
+        new_help.setTime(DateUtil.currentTime());
         helpRepository.flush();
         return "redirect:/help_center";
     }
@@ -51,6 +58,10 @@ public class HelpCenterController {
     @RequestMapping("/study_up")
     public String studyUp(StudyAid new_study,@RequestParam("login_id") int login_id){
         new_study.setPubId(login_id);
+        new_study.setViewNumb(1);
+        new_study.setCommentNumb(0);
+        new_study.setPraiseNumb(0);
+        new_study.setTime(DateUtil.currentTime());
         studyRepository.save(new_study);
         studyRepository.flush();
         return "redirect:/help_center";
