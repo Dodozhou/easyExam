@@ -1,0 +1,58 @@
+/**
+ * Created by person on 2017/3/30.
+ */
+$(function(){
+    $('#mainnav>li:first-child').css('color','#ec6149');
+    $('#basecont').css('display','block');
+    $('#pwdcont').css('display','none');
+    $('#mainnav>li').click(function(){
+        $('#mainnav>li').css('color','#5d5d5d');
+        $(this).css('color','#ec6149');
+    });
+    $('#mainnav>li:first-child').click(function(){
+        $('#basecont').css('display','block');
+        $('#pwdcont').css('display','none');
+    });
+    $('#mainnav>li:last-child').click(function(){
+        $('#basecont').css('display','none');
+        $('#pwdcont').css('display','block');
+    });
+    //关于修改
+    $('#basecont>form>ul>li>ul>.xiugai>p').css('display','none');
+    $('#basecont>form>ul>li>ul>.xiugai').click(function(){
+        $(this).find('div').toggle();
+        $(this).find('p').toggle();
+        if($('#basecont>form>ul>li:nth-child(3)>ul>.xiugai>p').css('display')=='inline-block'){
+            $('#basecont>form>ul>li:nth-child(3)>ul>li:nth-child(2)>input').focus();
+        }
+        if($('#basecont>form>ul>li:nth-child(4)>ul>.xiugai>p').css('display')=='inline-block'){
+            $('#basecont>form>ul>li:nth-child(4)>ul>li:nth-child(2)>input').focus();
+        }
+    });
+    $('#basecont>form>ul>li:nth-child(3)>ul>li:nth-child(2)>input').focus(function(){
+        $('#basecont>form>ul>li:nth-child(3)>ul>.xiugai>div').css('display','none');
+        $('#basecont>form>ul>li:nth-child(3)>ul>.xiugai>p').css('display','inline-block');
+    });
+    $('#basecont>form>ul>li:nth-child(4)>ul>li:nth-child(2)>input').focus(function(){
+        $('#basecont>form>ul>li:nth-child(4)>ul>.xiugai>div').css('display','none');
+        $('#basecont>form>ul>li:nth-child(4)>ul>.xiugai>p').css('display','inline-block');
+    });
+
+//    关于密码
+//   改旧密码应该是在正确的情况下
+    $('.pwdtip').css('display','none');
+    $('#oldpwd').blur(function(){
+        if($('#oldpwd').val().length<6){
+            $('.pwdtip:first').css('display','block').text('其输入6位或6位以上的密码');
+        }else{
+            $('.pwdtip:first').css('display','none');
+        }
+    });
+    $('#newpwd').blur(function(){
+       if($('#newpwd').val()!=$('#oldpwd').val()){
+           $('.pwdtip:last').css('display','block').text('两次输入的密码不一致');
+       }else{
+           $('.pwdtip:last').css('display','none');
+       }
+    })
+});

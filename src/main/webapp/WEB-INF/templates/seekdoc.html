@@ -1,0 +1,175 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——发起文档悬赏</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/seekdoc.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}"/>
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<div id="seekdocnav">
+    发起文档悬赏<span>简单两步，找到你需要的文档</span>
+</div>
+<main>
+    <form name="form5" th:object="${seek}" th:action="@{/doc_seek}" method="post">
+        <input type="hidden" th:value="${publisher_id}" name="publisher_id" />
+        <ul id="seekinfo">
+            <li>
+                <label><span>*</span>标题：</label><input th:field="*{seekTitle}" type="text" placeholder="请输入文档标题"/>
+                <div class="seektip">
+
+                </div>
+            </li>
+            <li>
+                <label><span>*</span>具体要求：</label>
+                <textarea th:field="*{seekNeed}"></textarea>
+                <div id="tip">填写的越简单易懂，越容易找到满意的文档哦~，<br/>如字数、格式、内容要求...</div>
+            </li>
+            <li>
+                <label><span>*</span>学院：</label>
+                <select th:field="*{needAcademy}">
+                    <option value="学院">学院</option>
+
+                    <option value="石油与天然气学院">石油与天然气学院</option>
+                    <option value="地球科学与技术学院">地球科学与技术学院</option>
+                    <option value="机电工程学院">机电工程学院</option>
+                    <option value="化学化工学院">化学化工学院</option>
+                    <option value="材料科学与工程学院">材料科学与工程学院</option>
+                    <option value="计算机科学学院">计算机科学学院</option>
+                    <option value="电气信息学院">电气信息学院</option>
+                    <option value="土木工程与建筑学院">土木工程与建筑学院</option>
+                    <option value="理学院">理学院</option>
+                    <option value="经济管理学院/MBA教育中心">经济管理学院/MBA教育中心</option>
+                    <option value="法学院">法学院</option>
+                    <option value="马克思主义学院">马克思主义学院</option>
+                    <option value="外国语学院">外国语学院</option>
+                    <option value="体育学院(体育工作委员会)">体育学院(体育工作委员会)</option>
+                    <option value="艺术学院">艺术学院</option>
+                    <option value="通用" selected="selected">通用</option>
+                </select>
+                <div class="seektip">
+
+                </div>
+            </li>
+            <li>
+                <label><span>*</span>年级：</label>
+                <select th:field="*{needGrade}">
+                    <option value="0">年级</option>
+
+                    <option value="1">大一</option>
+                    <option value="2">大二</option>
+                    <option value="3">大三</option>
+                </select>
+                <div class="seektip">
+
+                </div>
+            </li>
+            <li>
+                <label><span>*</span>悬赏期限：</label>
+                <select th:field="*{seekTime}">
+                    <option value="0">期限</option>
+
+                    <option value="1">1天</option>
+                    <option value="2">2天</option>
+                    <option value="3">3天</option>
+                    <option value="4">4天</option>
+                    <option value="5">5天</option>
+                    <option value="6">6天</option>
+                    <option value="7">7天</option>
+                </select>
+                <div class="seektip">
+
+                </div>
+            </li>
+            <li>
+                <label><span>*</span>赏金：</label>
+                <select th:field="*{seekPraise}">
+                    <option value="0">下载劵</option>
+
+                    <option value="1">1个下载劵</option>
+                    <option value="2">2个下载劵</option>
+                    <option value="3">3个下载劵</option>
+                    <option value="4">4个下载劵</option>
+                </select>
+                <div class="seektip">
+
+                </div>
+            </li>
+            <li>
+                <label><span>*</span>验证码：</label>
+                <input id="codeinput" type="text" placeholder="请输入验证码" onblur="validate()"/>
+                <input id='code' type="button" onClick="createCode()"/>
+                <div class="seektip">
+
+                </div>
+            </li>
+        </ul>
+        <div id="seekbtn">
+            <input type="submit" value="发布需求"/>
+        </div>
+    </form>
+</main>
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+<script th:src="@{/static/js/seekdoc.js}"></script>
+</body>
+</html>

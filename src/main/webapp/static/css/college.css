@@ -1,0 +1,103 @@
+main #maintitle{
+    width:100%;
+    margin: 65px 0 3vw 0;
+}
+#maintitle img{
+    width:100%;
+}
+main #maincontent #contnav{
+    display: inline-block;
+    padding:0 15px 10px 15px;
+    border-bottom:2px solid #5d5d5d;
+}
+#contnav img{
+    width:20px;
+    vertical-align: -3px;
+    margin-right:5px;
+}
+#contnav span{
+    font-weight:600;
+}
+#maincontent hr{
+    height:1px;
+    border:none;
+    border-top:1px solid #eee;
+    margin-bottom: 4vw;
+}
+#maincontent #cont>ul>li{
+    float: left;
+    width:31%;
+    margin-right:2%;
+    text-align: center;
+}
+#maincontent #cont>ul>li:hover ul{
+    /*-webkit-box-shadow: 0 0 1px  #ddd;*/
+    /*-moz-box-shadow: 0 hoff voff blur color;*/
+    box-shadow: 0 0 4px #bbb;
+}
+.except{
+      margin-right:0;
+  }
+#cont>ul>li>ul{
+    display: inline-block;
+    border:1px solid #eee;
+    margin-bottom: 4vw;
+    padding:0 3% 3% 3%;
+    background-color: #f8f8f8;
+}
+#cont>ul>li>ul>li{
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+#cont>ul>li>ul>li:first-child{
+    display: inline-block;
+    background-color: rgba(248,248,248,0.6);
+}
+#cont>ul>li>ul>li:first-child>a{
+    width:25%;
+    display: inline-block;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    border:1px solid rgba(221,221,221,0.6);
+    padding:5px;
+}
+#cont>ul>li>ul>li>a>img{
+    width:100%;
+}
+#cont>ul>li>ul>li:nth-child(2)>a{
+    font-weight:600;
+    color: #5d5d5d;
+}
+#cont>ul>li>ul>li:nth-child(3){
+    border-bottom:1px solid #eee;
+}
+#cont>ul>li>ul>li:nth-child(3)>button{
+    display: block;
+    border:none;
+    outline:none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius:20px;
+    width:40%;
+    margin:30px auto  20px auto;
+    padding:10px 20px;
+    background-color: #42c02e;
+    color: #fff7f2;
+    -webkit-transition: all  0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+#cont>ul>li>ul>li:nth-child(3)>button:hover{
+    width:43%;
+    background-color: #24c012;
+}
+#cont>ul>li>ul>li:last-child{
+    font-size: 0.9em;
+}
+

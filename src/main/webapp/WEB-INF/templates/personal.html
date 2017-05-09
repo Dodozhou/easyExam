@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——个人中心</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/personal.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<main>
+    <ul id="resume">
+        <li><img th:src="@{${user.userImg}}" alt="头像"/></li>
+        <li th:text="${user.nickname}">Lwf</li>
+        <li th:text="${user.email}">Web前端爱好者</li>
+        <li>
+            <ul>
+                <li>下载<span>10</span></li>
+                <li>喜欢<span>10</span></li>
+                <li>上传<span>10</span></li>
+                <li>收获喜欢<span>10</span></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li><a th:href="@{'/user_shezhi/'+${user.id}}" >设置</a></li>
+                <li><a th:href="@{/data/upload}" >上传文档</a></li>
+            </ul>
+        </li>
+        <li>下载卷<span>10</span></li>
+    </ul>
+
+    <div id="content">
+        <ul id="contnav" class="clearfloat">
+            <li><img th:src="@{/static/img/xia.png}"/>下载</li>
+            <li><img th:src="@{/static/img/zan.png}"/>喜欢</li>
+            <li><img th:src="@{/static/img/sc.png}"/>上传</li>
+            <li><img th:src="@{/static/img/xh.png}"/>收获喜欢</li>
+        </ul>
+        <ul id="cont">
+            <li id="download">
+                <ul>
+                    <li>
+                        <div class="author">
+                            <img th:src="@{/static/img/h1.jpg}"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                        </div>
+                        <div class="content clearfloat">
+                            <div class="conleft">
+                                <div><img th:src="@{/static/img/word.png}"/><a href="#">概率与统计复习资料</a></div>
+                                <p>
+                                    从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                                </p>
+                                <ul>
+                                    <li><a href="#">通用</a></li>
+                                    <li>概率与统计</li>
+                                    <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
+                                    <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                                    <li><img th:src="@{/static/img/zan.png}"/><span>67</span></li>
+                                    <li><img th:src="@{/static/img/xia.png}"/><span>125</span></li>
+                                </ul>
+                            </div>
+                            <div class="conright">
+                                <img th:src="@{/static/img/1.jpg}"/>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li id="like">
+                <ul>
+                    <li>
+                        <div class="author">
+                            <img th:src="@{/static/img/h1.jpg}"/><span class="name">不凡大叔</span>
+                            <time>昨天17.51</time>
+                        </div>
+                        <div class="content clearfloat">
+                            <div class="conleft">
+                                <div><img th:src="@{/static/img/word.png}"/><a href="#">概率与统计复习资料</a></div>
+                                <p>
+                                    从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                                </p>
+                                <ul>
+                                    <li><a href="#">通用</a></li>
+                                    <li>概率与统计</li>
+                                    <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
+                                    <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                                    <li><img th:src="@{/static/img/zan.png}"/><span>67</span></li>
+                                    <li><img th:src="@{/static/img/xia.png}"/><span>125</span></li>
+                                </ul>
+                            </div>
+                            <div class="conright">
+                                <img th:src="@{/static/img/1.jpg}"/>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li id="upload">
+                <ul>
+                    <li>
+                        <div class="author">
+                            <img th:src="@{/static/img/h3.jpg}"/><span class="name">池老师</span><time>昨天11:32</time>
+                        </div>
+                        <div class="content clearfloat">
+                            <div class="conleft">
+                                <div><img th:src="@{/static/img/pdf.png}"/><a href="#">大学英语复习资料</a></div>
+                                <p>
+                                    为了配合《大学英语教学大纲》（修订本）的实施，外教社在新世纪初隆重推出《大学英语》（全新版）系列教材，为促进我国大学英语教育再作贡献。全套教材由复旦大学、北京大学、华东师范大学、中国科技大学、华南理工大学、南京大学、武汉大学、南开大学、中山大学、华中理工大学等著名院校的资深教授及英语教学专家合作编写而成
+                                </p>
+                                <ul>
+                                    <li><a href="#">通用</a></li>
+                                    <li>概率与统计</li>
+                                    <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
+                                    <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                                    <li><img th:src="@{/static/img/zan.png}"/><span>67</span></li>
+                                    <li><img th:src="@{/static/img/xia.png}"/><span>125</span></li>
+                                </ul>
+                            </div>
+                            <div class="conright">
+                                <img th:src="@{/static/img/3.jpg}"/>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            <li id="gain">
+                <ul>
+                    <li>
+                        <div class="author">
+                            <img th:src="@{/static/img/h1.jpg}"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                        </div>
+                        <div class="content clearfloat">
+                            <div class="conleft">
+                                <div><img th:src="@{/static/img/word.png}"/><a href="#">概率与统计复习资料</a></div>
+                                <p>
+                                    从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                                </p>
+                                <ul>
+                                    <li><a href="#">通用</a></li>
+                                    <li>概率与统计</li>
+                                    <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
+                                    <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                                    <li><img th:src="@{/static/img/zan.png}"/><span>67</span></li>
+                                    <li><img th:src="@{/static/img/xia.png}"/><span>125</span></li>
+                                </ul>
+                            </div>
+                            <div class="conright">
+                                <img th:src="@{/static/img/1.jpg}"/>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</main>
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/static/js/personal.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+</body>
+</html>

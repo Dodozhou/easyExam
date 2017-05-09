@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+    <title>上传成功</title>
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<h1 style="margin-top: 80px">恭喜您，文档上传成功!</h1>
+</body>
+</html>

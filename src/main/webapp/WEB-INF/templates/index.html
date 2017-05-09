@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——首页</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/index.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+    <style>
+        nav>ul:first-child li:nth-child(2) a{
+            color: #ec6149;
+        }
+    </style>
+    <!--为了兼容IE9以下版本浏览器需要加入一个google的JS，当然可以下载引人html-->
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="imgslide">
+        <div id="slideshow">
+            <ul>
+                <li><img th:src="@{/static/img/slide1.jpg}" alt="slide1"/></li>
+                <li><img th:src="@{/static/img/slide2.jpg}" alt="slide2"/></li>
+            </ul>
+        </div>
+        <div id="slideshow-nav"></div>
+    </section>
+    <section id="main" class="clearfloat">
+        <div id="maincenter">
+            <div id="college">
+                <ul class="clearfloat">
+                    <li><a th:href="@{/college_detail/石工院}"><img th:src="@{/static/img/sg.png}"/><span>石工院</span></a></li>
+                    <li><a th:href="@{/college_detail/地科院}"><img th:src="@{/static/img/dk.png}"/><span>地科院</span></a></li>
+                    <li><a th:href="@{/college_detail/机电院}"><img th:src="@{/static/img/jd.png}"/><span>机电院</span></a></li>
+                    <li><a th:href="@{/college_detail/化工院}"><img th:src="@{/static/img/hg.png}"/><span>化工院</span></a></li>
+                    <li><a th:href="@{/college_detail/理学院}"><img th:src="@{/static/img/lx.png}"/><span>理学院</span></a></li>
+                    <li><a th:href="@{/college_detail/材料院}"><img th:src="@{/static/img/cl.png}"/><span>材料院</span></a></li>
+                    <li><a th:href="@{/college_detail/计科院}"><img th:src="@{/static/img/jk.png}"/><span>计科院</span></a></li>
+                    <li><a th:href="@{/college_detail/电信院}"><img th:src="@{/static/img/dq.png}"/><span>电信院</span></a></li>
+                    <li><a th:href="@{/college_detail/土建院}"><img th:src="@{/static/img/tm.png}"/><span>土建院</span></a></li>
+                    <li><a th:href="@{/college_detail/经管院}"><img th:src="@{/static/img/jg.png}"/><span>经管院</span></a></li>
+                    <li><a th:href="@{/college_detail/法学院}"><img th:src="@{/static/img/fx.png}"/><span>法学院</span></a></li>
+                    <li><a th:href="@{/college_detail/外语院}"><img th:src="@{/static/img/wy.png}"/><span>外语院</span></a></li>
+                    <li><a th:href="@{/college_detail/体育院}"><img th:src="@{/static/img/ty.png}"/><span>体育院</span></a></li>
+                    <li><a th:href="@{/college_detail/艺术院}"><img th:src="@{/static/img/ys.png}"/><span>艺术院</span></a></li>
+                    <li><a th:href="@{/college_detail/马院}"><img th:src="@{/static/img/ms.png}"/><span>马院</span></a></li>
+                    <li><a th:href="@{/college_detail/通用}"><img th:src="@{/static/img/pu.png}"/><span>通用</span></a></li>
+                    <li><a th:href="@{/exam_data}"><span>更多学院资料&nbsp;></span></a></li>
+                </ul>
+            </div>
+            <div id="hot">
+                <ul>
+                    <li th:each="doc,iterStat:${docs}">
+                        <div class="author">
+                            <img th:src="@{${doc.ownerImg}}"/><span class="name" th:text="${doc.ownerName}">不凡大叔</span><time th:text="${doc.pubDate}">昨天17.51</time>
+                        </div>
+                        <div class="content clearfloat">
+                            <div class="conleft">
+                                <div><img th:src="@{/static/img/word.png}"/><a href="#"><span th:text="${doc.dataTitle}"></span></a></div>
+                                <p th:text="${doc.dataDescription}">
+                                    从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                                </p>
+                                <ul>
+                                    <li><a href="#"><span th:text="${doc.dataCollege}">通用</span></a></li>
+                                    <li><span th:text="${doc.dataCategory}">概率与统计</span></li>
+                                    <li><img th:src="@{/static/img/ll.png}"/><span th:text="${doc.viewNumber}">200</span></li>
+                                    <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                                    <li><img th:src="@{/static/img/zan.png}"/><span th:text="${doc.dataPraise}">67</span></li>
+                                    <li><img th:src="@{/static/img/xia.png}"/><span th:text="${doc.downloadNumber}">125</span></li>
+                                </ul>
+                            </div>
+                            <div class="conright">
+                                <img th:src="@{${doc.dataImgs}}"/>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="loadmore">
+                <button>加载更多</button>
+            </div>
+        </div>
+        <div id="mainright">
+            <div id="upcommended">
+                <a th:href="@{/seek_all}">悬赏的文档</a>
+                <div>
+                    <img th:src="@{/static/img/lb.png}"/><span>发布正在悬赏的文档</span>
+                    <p>可以赚取下载劵，下载更多资料哦</p>
+                </div>
+            </div>
+
+
+            <div id="uploading">
+                <a th:href="@{/data/upload}" ><img th:src="@{/static/img/up.png}"/>上传我的文档</a>
+                <p>已有<span>2005</span>份资料</p>
+            </div>
+            <div id="collect">
+                <a th:href="@{/doc_seek}">发起文档悬赏</a>
+                <div>
+                    <img th:src="@{/static/img/lb.png}"/><span>找不到想要的考试资料</span>
+                    <p>发布悬赏请广大西油学子为你提供</p>
+                </div>
+
+                <p>已有<span>100</span>用户收到悬赏文档</p>
+                <a th:href="@{/doc_seek}" ><img th:src="@{/static/img/file.png}"/>我想求文档</a>
+            </div>
+            <div id="manito">
+                <a href="#">大神推荐&nbsp;&raquo;</a>
+                <ul>
+                    <li class="clearfloat">
+                        <div class="manleft">
+                            <a href="#"><img th:src="@{/static/img/m1.jpg}"/></a>
+                        </div>
+                        <div class="manright">
+                            <ul>
+                                <li><a href="#"> 锦如初见</a></li>
+                                <li>擅长学科：高等数学、概率统计</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="clearfloat">
+                        <div class="manleft">
+                            <a href="#"><img th:src="@{/static/img/m2.jpg}"/></a>
+                        </div>
+                        <div class="manright">
+                            <ul>
+                                <li><a href="#"> 王佩</a></li>
+                                <li>擅长学科：运筹学</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="clearfloat">
+                        <div class="manleft">
+                            <a href="#"><img th:src="@{/static/img/m3.jpeg}"/></a>
+                        </div>
+                        <div class="manright">
+                            <ul>
+                                <li><a href="#"> 淮左同学</a></li>
+                                <li>擅长学科：离散结构</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="clearfloat">
+                        <div class="manleft">
+                            <a href="#"><img th:src="@{/static/img/m4.jpeg}"/></a>
+                        </div>
+                        <div class="manright">
+                            <ul>
+                                <li><a href="#"> 江成</a></li>
+                                <li>擅长学科：计算机网络基础</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="clearfloat">
+                        <div class="manleft">
+                            <a href="#"><img th:src="@{/static/img/m5.jpg}"/></a>
+                        </div>
+                        <div class="manright">
+                            <ul>
+                                <li><a href="#"> 沐丞</a></li>
+                                <li>擅长学科：网络安全</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <ul class="clearfloat">
+        <li>友情链接：</li>
+        <li><a href="http://www.yiban.cn/">易班</a></li>
+        <li><a href="http://jwc.swpu.edu.cn/">西南石油大学教务处</a></li>
+        <li><a href="http://www.swpu.edu.cn/">西南石油大学门户网站</a></li>
+        <li><a href="http://www.swpuiot.com/">翼灵物联工作室</a></li>
+    </ul>
+    <p>Copyright&copy;2017翼灵物联 All Rights Reserved</p>
+</footer>
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+<script th:src="@{/static/js/index.js}"></script>
+</body>
+</html>

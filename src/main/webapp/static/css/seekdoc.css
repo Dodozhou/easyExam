@@ -1,0 +1,152 @@
+html,body{
+    background-color: rgba(248,248,248,0.8);
+}
+#seekdocnav{
+    width:80%;
+    margin:10vw auto 10px;
+    font-size: 1.1em;
+    color: #ec4a31;
+}
+#seekdocnav>span{
+    font-size:0.8em;
+    font-family: '华文行楷';
+    padding-left:5px;
+}
+main{
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 3px 4px #eee;
+    -moz-box-shadow:0 0 3px 4px #eee;
+    box-shadow:0 0 3px 4px #eee;
+    padding-left:8%;
+    padding-right:8%;
+    padding-top:3%;
+}
+main>form>#seekinfo{
+    padding-left: 3%;
+    padding-top:3%;
+    padding-bottom:2%;
+    border:1px solid #eee;
+}
+#seekinfo>li{
+    padding:1% 0;
+}
+#seekinfo>li>label{
+    display: inline-block;
+    width:13%;
+    text-align: right;
+    padding-right:5px;
+}
+#seekinfo>li>label>span{
+    color:#ec4a31;
+    padding-right:3px;
+}
+#seekinfo>li>input,#seekinfo>li>textarea{
+    width:50%;
+    outline: none;
+    border:1px solid rgba(255, 80, 50, 0.44);
+    padding:8px 10px;
+    vertical-align:middle;
+}
+#seekinfo>li:last-child>input[type='text']{
+    width:30%;
+    margin-left:0;
+}
+#seekinfo>li:last-child>input[type='button']{
+    border:none;
+    width:10%;
+    color: #fff;
+    font-style: italic;
+    background-color:#ec4a31;
+}
+#seekinfo>li>input{
+    margin-left:5px;
+}
+#seekinfo>li>textarea{
+    height:8vw;
+    vertical-align: top;
+    min-height:100px;
+    min-width:200px;
+}
+#seekinfo>li:nth-child(2){
+    position: relative;
+}
+#seekinfo>li:nth-child(2)>#tip{
+    position: absolute;
+    top:15px;
+    left:15%;
+    font-size: 0.8em;
+    color: rgba(142, 140, 137, 0.88);
+}
+#seekinfo>li>select{
+    padding:5px 8px;
+    border:1px solid rgba(255, 80, 50, 0.44);
+    outline: none;
+}
+main>form>#seekbtn{
+    text-align: right;
+    margin-right:10%;
+    padding-top:2%;
+    padding-bottom:3%;
+}
+#seekbtn>input{
+    padding:5px 15px;
+    border:none;
+    color: #fff;
+    outline:none;
+    background-color:#ec6149;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+#seekbtn>input:hover{
+    background-color:#ec4a31;
+}
+
+/*学院、年级、学科的提示*/
+#seekinfo>li{
+    position: relative;
+}
+.seektip{
+    top:8px;
+    position: absolute;
+    width:200px;
+    height:35px;
+    padding-left:5px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 1px #ff956a;
+    -moz-box-shadow:0 0 1px #ff956a;
+    box-shadow:0 0 1px #ff956a;
+    color:#ec4a31;
+    font-size:13px;
+    line-height:35px;
+}
+.seektip::after{
+    top:10px;
+    left:-8%;
+    content: '';
+    position: absolute;
+    width:0;
+    height:0;
+    border-width:8px;
+    border-style:solid;
+    border-color: transparent #ffeccf transparent transparent ;
+}
+#seekinfo>li:first-child>.seektip{
+    left:65%;
+}
+#seekinfo>li:nth-child(3)>.seektip{
+    left:41%;
+}
+#seekinfo>li:nth-child(4)>.seektip,#seekinfo>li:nth-child(5)>.seektip{
+    left:25%;
+}
+#seekinfo>li:nth-child(4)>.seektip,#seekinfo>li:nth-child(5)>.seektip{
+     left:24%;
+ }
+#seekinfo>li:nth-child(6)>.seektip{
+    left:28%;
+}
+#seekinfo>li:nth-child(7)>.seektip{
+    left:56%;
+}

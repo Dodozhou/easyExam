@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——考试资料</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/collegefile.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+    <style>
+        nav ul li:nth-child(3) a{
+            color: #ec6149;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<ul id="college" class="clearfloat">
+    <li><img th:src="@{/static/img/jk.png}"/><p><span th:text="${college}">计算机科学学院</span><br/><span>收录了103份资料&nbsp;&nbsp;200人关注</span></p></li>
+    <li><button>+关注</button></li>
+    <li><button>上传文档</button></li>
+</ul>
+<main>
+    <section id="mainleft">
+        <div id="attention">
+            <p>关注所在学院，生成自己的考试资料专属定制<a href='college.html' >更多学院&nbsp;&raquo;</a></p>
+            <ul  class="clearfloat">
+
+                <li>
+                    <ul>
+
+                        <li><img th:src="@{/static/img/sg.png}"/></li>
+                        <li>石工院</li>
+                        <li>  <a th:href="@{/college_detail/石工院}"><button>+关注</button>  </a></li>
+
+                    </ul>
+                </li>
+
+
+                <li>
+                    <ul>
+
+                        <li><img th:src="@{/static/img/jk.png}"/></li>
+                        <li>计科院</li>
+                        <li> <a th:href="@{/college_detail/计科院}"><button>+关注</button> </a></li>
+
+                    </ul>
+                </li>
+
+
+                <li>
+                    <ul>
+
+                        <li><img th:src="@{/static/img/dk.png}"/></li>
+                        <li>地科院</li>
+                        <li>  <a th:href="@{/college_detail/地科院}"><button>+关注</button>  </a></li>
+
+                    </ul>
+                </li>
+
+
+                <li>
+                    <ul>
+
+                        <li><img th:src="@{/static/img/jd.png}"/></li>
+                        <li>机电院</li>
+                        <li> <a th:href="@{/college_detail/机电院}"><button>+关注</button> </a></li>
+
+                    </ul>
+                </li>
+
+
+                <li>
+                    <ul>
+
+                        <li><img th:src="@{/static/img/hg.png}"/></li>
+                        <li>化工院</li>
+                        <li> <a th:href="@{/college_detail/化工院}"><button>+关注</button>   </a></li>
+
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <div id="files" class="clearfloat">
+            <ul id="filesleft">
+                <li>搜索相关资源</li>
+                <li>直接搜索:</li>
+                <li>
+                    <form name="form1">
+                        <input class='searinput' id="search" type="search" placeholder="Search"/>
+                    </form>
+                </li>
+                <li>选择相关年级:</li>
+                <li>
+                    <form name="form2" action="#" method="get">
+                        <select>
+                            <option>大一</option>
+                            <option>大二</option>
+                            <option>大三</option>
+                        </select>
+                    </form>
+                </li>
+                <li>选择资源格式:</li>
+                <li>
+                    <form name="form2" action="#" method="get">
+                        <select>
+                            <option>word</option>
+                            <option>ppt</option>
+                            <option>pdf</option>
+                        </select>
+                    </form>
+                </li>
+            </ul>
+            <div id="filesright">
+                <ul id="rightnav" class="clearfloat">
+                    <li class=""><img th:src="@{/static/img/zl.png}"/>最新收录</li>
+                    <li class=""><img th:src="@{/static/img/hot.png}"/>热门</li>
+                </ul>
+                <div id="rightcont">
+                    <ul id="rightnew">
+                        <li th:each="doc,iterStat:${sharings}">
+                            <div class="author">
+                                <img th:src="@{/static/img/h1.jpg}"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                            </div>
+                            <div class="content clearfloat">
+                                <div class="conleft">
+                                    <div><img th:src="@{/static/img/word.png}"/><a href="#"><span th:text="${doc.dataTitle}"></span></a></div>
+                                    <p th:text="${doc.dataDescription}">
+                                        从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                                    </p>
+                                    <ul>
+                                        <li><a href="#"><span th:text="${doc.dataCollege}">通用</span></a></li>
+                                        <li><span th:text="${doc.dataCategory}">概率与统计</span></li>
+                                        <li><img th:src="@{/static/img/ll.png}"/><span th:text="${doc.viewNumber}">200</span></li>
+                                        <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                                        <li><img th:src="@{/static/img/zan.png}"/><span th:text="${doc.dataPraise}">67</span></li>
+                                        <li><img th:src="@{/static/img/xia.png}"/><span th:text="${doc.downloadNumber}">125</span></li>
+                                    </ul>
+                                </div>
+                                <div class="conright">
+                                    <img th:src="${doc.dataImgs}"/>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul id="righthot">
+                        <li th:each="doc,iterStat:${sharings}">
+                            <div class="author">
+                                <img th:src="@{/static/img/h7.jpg}"/><span class="name">计算机网络大叔</span><time>昨天17.51</time>
+                            </div>
+                            <div class="content clearfloat">
+                                <div class="conleft">
+                                    <div><img th:src="@{/static/img/word.png}"/><a href="#"><span th:text="${doc.dataTitle}"></span></a></div>
+                                    <p th:text="${doc.dataDescription}">
+                                        从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                                    </p>
+                                    <ul>
+                                        <li><a href="#"><span th:text="${doc.dataCollege}">通用</span></a></li>
+                                        <li><span th:text="${doc.dataCategory}">概率与统计</span></li>
+                                        <li><img th:src="@{/static/img/ll.png}"/><span th:text="${doc.viewNumber}">200</span></li>
+                                        <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                                        <li><img th:src="@{/static/img/zan.png}"/><span th:text="${doc.dataPraise}">67</span></li>
+                                        <li><img th:src="@{/static/img/xia.png}"/><span th:text="${doc.downloadNumber}">125</span></li>
+                                    </ul>
+                                </div>
+                                <div class="conright">
+                                    <img th:src="${doc.dataImgs}"/>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="mainright">
+        <ul id="test">
+            <li>考试信息</li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">2017年第七周考试安排</a><time>[04-25]</time></li>
+            <li><a href="#">展开更多&or;</a></li>
+        </ul>
+        <div id="attenpersondiv">
+            <span>关注的人(300)</span>
+            <ul id="attenperson" class="clearfloat">
+                <li><a href="#"><img th:src="@{/static/img/m1.jpg}"/></a></li>
+                <li><a href="#"><img th:src="@{/static/img/m2.jpg}"/></a></li>
+                <li><a href="#"><img th:src="@{/static/img/m3.jpeg}"/></a></li>
+                <li><a href="#"><img th:src="@{/static/img/m4.jpeg}"/></a></li>
+                <li><a href="#"><img th:src="@{/static/img/m5.jpg}"/></a></li>
+                <li><a href="#"><img th:src="@{/static/img/h1.jpg}"/></a></li>
+                <li><a href="#"><img th:src="@{/static/img/h2.jpg}"/></a></li>
+                <li><a href="#"><img th:src="@{/static/img/h3.jpg}"/></a></li>
+                <li><a href="#"><img th:src="@{/static/img/sl.png}"/></a></li>
+            </ul>
+        </div>
+    </section>
+</main>
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+<script th:src="@{/static/js/collegefile.js}"></script>
+</body>
+</html>

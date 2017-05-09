@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——上传文档</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/upload.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+
+<div id="uploadnav">
+    上传文档<span>简单两步，与校友分享你的考试资源</span>
+</div>
+<main>
+    <form th:object="${doc}" th:action="@{/data/upload}" method="post" enctype="multipart/form-data">
+        <div id="choose">
+            <label id="filelabel" for="upfile"><img th:src="@{/static/img/up.png}"/>上传我的文档</label>
+            <input type="file" name="doc_file" id="upfile" style="display: none;"/>
+            <p>每成功上传一篇公开文章，可获取<span>下载卷+2</span>奖励</p>
+        </div>
+        <ul id="upinfo">
+            <li>
+                <label><span>*</span>标题：</label>
+                <input type="text" th:field="*{dataTitle}" placeholder="请输入文档标题"/>
+                <div class="uptip">
+
+                </div>
+            </li>
+            <li>
+                <label><span>*</span>简介：</label>
+                <textarea th:field="*{dataDescription}"></textarea>
+                <div id="tip">请填写文档简介，帮助文档扩散更广~</div>
+            </li>
+            <li>
+                <label><span>*</span>学院：</label>
+                <select th:field="*{dataCollege}">
+                    <option value="学院">学院</option>
+
+                    <option value="石工院">石工院</option>
+                    <option value="地科院">地科院</option>
+                    <option value="机电院">机电院</option>
+                    <option value="化工院">化工院</option>
+                    <option value="材料院">材料院</option>
+                    <option value="计科院">计科院</option>
+                    <option value="电信院">电信院</option>
+                    <option value="土建院">土建院</option>
+                    <option value="理学院">理学院</option>
+                    <option value="经管院">经管院</option>
+                    <option value="法学院">法学院</option>
+                    <option value="马院">马院</option>
+                    <option value="外语院">外语院</option>
+                    <option value="体育院">体育院</option>
+                    <option value="艺术院">艺术院</option>
+                    <option value="通用">通用</option>
+                </select>
+                <div class="uptip">
+
+                </div>
+            </li>
+            <li>
+                <label><span>*</span>年级：</label>
+                <select th:field="*{dataGrade}">
+                    <option value="0">年级</option>
+                    <option value="1">大一</option>
+                    <option value="2">大二</option>
+                    <option value="3">大三</option>
+                    <option value="4">大四</option>
+                </select>
+                <div class="uptip">
+
+                </div>
+            </li>
+            <li>
+                <label><span>*</span>学科：</label>
+                <input type="text" th:field="*{dataCategory}" placeholder="请输入上传资料的学科名称"/>
+                <div class="uptip">
+
+                </div>
+            </li>
+            <li>
+                <label><span>*</span>教材：</label>
+                <div id="imgdisplay">
+                    <img th:src="@{/static/img/jc.png}" alt="教材"/>
+                </div>
+                <label for="file"><span id="upclick">点击上传</span></label>
+                <input type="file" id="file" name="doc_img"  style="display: none;"/>
+            </li>
+        </ul>
+        <div id="upbtn">
+            <input type="submit" value="上传"/>
+        </div>
+    </form>
+</main>
+
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+<script th:src="@{/static/js/upload.js}"></script>
+</body>
+</html>

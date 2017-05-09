@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——分享中心</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/sharedetail.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+    <style>
+        nav>ul:first-child li:nth-child(5) a{
+            color: #ec6149;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<main>
+    <section id="article">
+        <div id="title"><span th:text="${share.sharingTitle}">关于选课的一些建议</span></div>
+        <div id="author">
+            <div id="authorimg">
+                <img th:src="@{/static/img/h1.jpg}" alt="作者"/>
+            </div>
+            <div id="authorinfo">
+                <ul class="clearfloat">
+                    <li>作者</li>
+                    <li>不凡大叔</li>
+                </ul>
+                <ul class="clearfloat">
+                    <li>2017.04.02 12:34</li>
+                    <li>阅读&nbsp;<span th:text="${share.readingNumber}">234</span></li>
+                    <li>评论&nbsp;7</li>
+                    <li>喜欢&nbsp;<span th:text="${share.sharingPraise}">78</span></li>
+                </ul>
+            </div>
+        </div>
+        <div id="cont">
+            <p th:utext="${share.sharingContent}">高校强课难已成为一个头疼的问题，每逢选课，教务系统总是不断崩溃，等到系统稳定时，心仪的课程早已爆满，选课都是泪。。初学编程，我们能否设计一套程序，帮助我们毫无压力，瞬间秒选选课？我们该如何更好的选课？高校强课难已成为一个头疼的问题，每逢选课，教务系统总是不断崩溃，等到系统稳定时，心仪的课程早已爆满，选课都是泪。。初学编程，我们能否设计一套程序，帮助我们毫无压力，瞬间秒选选课？我们该如何更好的选课？高校强课难已成为一个头疼的问题，每逢选课，教务系统总是不断崩溃，等到系统稳定时，心仪的课程早已爆满，选课都是泪。。初学编程，我们能否设计一套程序，帮助我们毫无压力，瞬间秒选选课？我们该如何更好的选课？高校强课难已成为一个头疼的问题，每逢选课，教务系统总是不断崩溃，等到系统稳定时，心仪的课程早已爆满，选课都是泪。。初学编程，我们能否设计一套程序，帮助我们毫无压力，瞬间秒选选课？我们该如何更好的选课？高校强课难已成为一个头疼的问题，每逢选课，教务系统总是不断崩溃，等到系统稳定时，心仪的课程早已爆满，选课都是泪。。初学编程，我们能否设计一套程序，帮助我们毫无压力，瞬间秒选选课？我们该如何更好的选课？</p>
+            <div id="showtip">
+                显示全部&or;
+            </div>
+            <div id="hiddentip">
+                收起&and;
+            </div>
+        </div>
+        <div id="zan">
+            <ul class="clearfloat">
+                <li><img th:src="@{/static/img/like.png}"/>喜欢<span th:text="${share.sharingPraise}">10</span></li>
+                <li>
+                    <ul class="clearfloat">
+                        <li>分享到：<img th:src="@{/static/img/wx.png}"/></li>
+                        <li><img th:src="@{/static/img/kj.png}"/></li>
+                        <li><img th:src="@{/static/img/sqq.png}"/></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="mycomment" class="clearfloat">
+        <div id="perimg" >
+            <img th:src="@{/static/img/per.png}"/>
+        </div>
+        <div id="logtip">
+            <button>登录</button>后发表评论
+        </div>
+        <div id="afterlog">
+            <form name="common">
+                <textarea></textarea>
+                <div class="canorfa">
+                    <span>取消</span>
+                    <input type="submit" value="发表" />
+                </div>
+            </form>
+            <div id="comtip">
+                <span>写下你的评论...</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="othercomment">
+        <div id="comcount">
+            <span>6条评论</span>
+        </div>
+        <ul id="comcont">
+            <li>
+                <ul>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/h2.jpg}"/></li>
+                            <li>甘球</li>
+                            <li>昨天12:23</li>
+                        </ul>
+                    </li>
+                    <li>求作者推荐更多的选课的方法</li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/zan.png}"/>7人赞</li>
+                            <li><img th:src="@{/static/img/pl.png}"/>回复</li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="#">不凡大叔</a>：<span>@</span><a href="#">甘球</a><span>没错，你的分享很有价值哦</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                    <li>
+                                        <a href="#">甘球</a>：<span>@</span><a href="#">不凡大叔</a><span>谢谢</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="huifuli">
+                                <form name="huifu">
+                                    <textarea></textarea>
+                                    <div class="canorfa">
+                                        <span>取消</span>
+                                        <input type="submit" value="发表" />
+                                    </div>
+                                </form>
+                                <div class="huifutip">
+                                    <span>写下你的评论...</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/h2.jpg}"/></li>
+                            <li>甘球</li>
+                            <li>昨天12:23</li>
+                        </ul>
+                    </li>
+                    <li>求作者推荐更多的选课的方法</li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/zan.png}"/>8人赞</li>
+                            <li><img th:src="@{/static/img/pl.png}"/>回复</li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="#">不凡大叔</a>：<span>@</span><a href="#">甘球</a><span>没错，你的分享很有价值哦</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                    <li>
+                                        <a href="#">甘球</a>：<span>@</span><a href="#">不凡大叔</a><span>谢谢</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="huifuli">
+                                <form name="huifu">
+                                    <textarea></textarea>
+                                    <div class="canorfa">
+                                        <span>取消</span>
+                                        <input type="submit" value="发表"/>
+                                    </div>
+                                </form>
+                                <div class="huifutip">
+                                    <span>写下你的评论...</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/h2.jpg}"/></li>
+                            <li>甘球</li>
+                            <li>昨天12:23</li>
+                        </ul>
+                    </li>
+                    <li>求作者推荐更多的选课的方法</li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/zan.png}"/>9人赞</li>
+                            <li><img th:src="@{/static/img/pl.png}"/>回复</li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="#">不凡大叔</a>：<span>@</span><a href="#">甘球</a><span>没错，你的分享很有价值哦</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                    <li>
+                                        <a href="#">甘球</a>：<span>@</span><a href="#">不凡大叔</a><span>谢谢</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="huifuli">
+                                <form name="huifu">
+                                    <textarea></textarea>
+                                    <div class="canorfa">
+                                        <span>取消</span>
+                                        <input type="submit" value="发表"/>
+                                    </div>
+                                </form>
+                                <div class="huifutip">
+                                    <span>写下你的评论...</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/h2.jpg}"/></li>
+                            <li>甘球</li>
+                            <li>昨天12:23</li>
+                        </ul>
+                    </li>
+                    <li>求作者推荐更多的选课的方法</li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/zan.png}"/>6人赞</li>
+                            <li><img th:src="@{/static/img/pl.png}"/>回复</li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="#">不凡大叔</a>：<span>@</span><a href="#">甘球</a><span>没错，你的分享很有价值哦</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                    <li>
+                                        <a href="#">甘球</a>：<span>@</span><a href="#">不凡大叔</a><span>谢谢</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="huifuli">
+                                <form name="huifu">
+                                    <textarea></textarea>
+                                    <div class="canorfa">
+                                        <span>取消</span>
+                                        <input type="submit" value="发表"/>
+                                    </div>
+                                </form>
+                                <div class="huifutip">
+                                    <span>写下你的评论...</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/h2.jpg}"/></li>
+                            <li>甘球</li>
+                            <li>昨天12:23</li>
+                        </ul>
+                    </li>
+                    <li>求作者推荐更多的选课的方法</li>
+                    <li class="huifuli">
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/zan.png}"/>3人赞</li>
+                            <li><img th:src="@{/static/img/pl.png}"/>回复</li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="#">不凡大叔</a>：<span>@</span><a href="#">甘球</a><span>没错，你的分享很有价值哦</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                    <li>
+                                        <a href="#">甘球</a>：<span>@</span><a href="#">不凡大叔</a><span>谢谢</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <form name="huifu">
+                                    <textarea></textarea>
+                                    <div class="canorfa">
+                                        <span>取消</span>
+                                        <input type="submit" value="发表"/>
+                                    </div>
+                                </form>
+                                <div class="huifutip">
+                                    <span>写下你的评论...</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/h2.jpg}"/></li>
+                            <li>甘球</li>
+                            <li>昨天12:23</li>
+                        </ul>
+                    </li>
+                    <li>求作者推荐更多的选课的方法</li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li><img th:src="@{/static/img/zan.png}"/>2人赞</li>
+                            <li><img th:src="@{/static/img/pl.png}"/>回复</li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="#">不凡大叔</a>：<span>@</span><a href="#">甘球</a><span>没错，你的分享很有价值哦</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                    <li>
+                                        <a href="#">甘球</a>：<span>@</span><a href="#">不凡大叔</a><span>谢谢</span>
+                                        <p><time>2017.3.25&nbsp;12:23</time><img th:src="@{/static/img/pl.png}"/><span class="huifuclick">回复</span></p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="huifuli">
+                                <form name="huifu">
+                                    <textarea></textarea>
+                                    <div class="canorfa">
+                                        <span>取消</span>
+                                        <input type="submit" value="发表"/>
+                                    </div>
+                                </form>
+                                <div class="huifutip">
+                                    <span>写下你的评论...</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</main>
+
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+<script th:src="@{/static/js/sharedetail.js}"></script>
+</body>
+</html>

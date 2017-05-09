@@ -1,0 +1,180 @@
+html,body{
+    background-color: rgba(248,248,248,0.8);
+}
+#uploadnav{
+    width:80%;
+    margin:10vw auto 10px;
+    font-size: 1.1em;
+    color: #ec4a31;
+}
+#uploadnav>span{
+    font-size:0.8em;
+    font-family: '华文行楷';
+    padding-left:5px;
+}
+main{
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 3px 4px #eee;
+    -moz-box-shadow:0 0 3px 4px #eee;
+    box-shadow:0 0 3px 4px #eee;
+    padding-left:8%;
+    padding-right:8%;
+    padding-top:3%;
+}
+main>form>#choose{
+    margin:2vw auto;
+    padding:3vw 0 1vw;
+    border:1px dashed #8e8c89;
+    text-align: center;
+}
+main>form>#choose>label{
+    display: block;
+    width:30%;
+    padding:10px 0;
+    margin:0 auto 5px;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;;
+    background-color: #ec6149;
+    color: #fff4f3;
+    cursor: pointer;
+}
+#choose>label:hover{
+    background-color: #ec4a31;
+}
+#choose>label>img{
+    width:20px;
+    margin-right:5px;
+    vertical-align: -1px;
+}
+#choose>p{
+    font-size:0.9em;
+    color:#8e8c89;
+}
+main>form>#upinfo{
+    padding-left: 3%;
+    padding-top:3%;
+    padding-bottom:2%;
+    border:1px solid #eee;
+}
+#upinfo>li{
+    padding:1% 0;
+}
+#upinfo>li>label{
+    padding-right:5px;
+}
+#upinfo>li>label>span{
+    color:#ec4a31;
+    padding-right:3px;
+}
+#upinfo>li>input,#upinfo>li>textarea{
+    width:50%;
+    outline: none;
+    border:1px solid rgba(255, 80, 50, 0.44);
+    padding:8px 10px;
+    vertical-align: middle;
+}
+#upinfo>li>input{
+    margin-left:5px;
+
+}
+#upinfo>li>textarea{
+    height:8vw;
+    min-height: 100px;
+    min-width:200px;
+    vertical-align: top;
+}
+#upinfo>li:nth-child(2){
+    position: relative;
+}
+#upinfo>li:nth-child(2)>#tip{
+    position: absolute;
+    top:15px;
+    /*left:10%;*/
+    left:78px;
+    font-size: 0.8em;
+    color: rgba(142, 140, 137, 0.88);
+}
+#upinfo>li>select{
+    padding:5px 8px;
+    border:1px solid rgba(255, 80, 50, 0.44);
+    outline: none;
+}
+#upinfo>li:nth-child(5)>input{
+    width:30%;
+}
+#upinfo>li:nth-child(6)>div{
+    display: inline-block;
+    width:15%;
+    border:1px solid rgba(255, 80, 50, 0.44);
+}
+#upinfo>li:nth-child(6)>div>img{
+    width:100%;
+    vertical-align: top;
+}
+#upinfo>li:nth-child(6)>label>#upclick{
+    display:inline-block;
+    position: relative;
+    top:95px;
+    left:5px;
+}
+main>form>#upbtn{
+    text-align: right;
+    margin-right:10%;
+    padding-top:2%;
+    padding-bottom:3%;
+}
+#upbtn>input{
+    padding:5px 15px;
+    border:none;
+    color: #fff;
+    outline:none;
+    background-color:#ec6149;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+#upbtn>input:hover{
+    background-color:#ec4a31;
+}
+
+/*学院、年级、学科的提示*/
+#upinfo>li:first-child,#upinfo>li:nth-child(3),#upinfo>li:nth-child(4),#upinfo>li:nth-child(5){
+    position: relative;
+}
+.uptip{
+    top:8px;
+    position: absolute;
+    width:200px;
+    height:35px;
+    padding-left:5px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 1px #ff956a;
+    -moz-box-shadow:0 0 1px #ff956a;
+    box-shadow:0 0 1px #ff956a;
+    color:#ec4a31;
+    font-size:13px;
+    line-height:35px;
+}
+.uptip::after{
+    top:10px;
+    left:-8%;
+    content: '';
+    position: absolute;
+    width:0;
+    height:0;
+    border-width:8px;
+    border-style:solid;
+    border-color: transparent #ffeccf transparent transparent ;
+}
+#upinfo>li:first-child>.uptip{
+    left:60%;
+}
+#upinfo>li:nth-child(3)>.uptip,#upinfo>li:nth-child(4)>.uptip{
+    left:21%;
+}
+#upinfo>li:nth-child(5)>.uptip{
+    left:41%;
+}

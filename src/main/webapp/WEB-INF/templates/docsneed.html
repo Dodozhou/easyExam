@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>易考——首页</title>
+        <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+        <link type="text/css" rel="stylesheet" th:href="@{/static/css/docsneed.css}"/>
+        <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+        <style>
+            nav>ul:first-child li:nth-child(2) a{
+                color: #ec6149;
+            }
+        </style>
+        <!--为了兼容IE9以下版本浏览器需要加入一个google的JS，当然可以下载引人html-->
+        <!--[if lt IE 9]>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    </head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+    <div id="docsneednav">
+      悬赏的文档<span>提交悬赏文档，赚下载劵哦</span>
+    </div>
+    <main>
+        <ul id="docslist">
+            <li th:each="seek,iterStat:${seeks}">
+                <div class="author">
+                    <img th:src="@{/static/img/h1.jpg}"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                </div>
+                <div class="content">
+                    <span th:text="${seek.seekTitle}">运筹学课后习题答案</span>
+                    <p th:text="${seek.seekNeed}">
+                        要求文档为word文档格式、要有详细解析，对照运筹学课本
+                    </p>
+                    <ul class="clearfloat">
+                        <li><span th:text="${seek.needAcademy}">经管院</span></li>
+                        <li><span th:text="${seek.seekPraise}">2</span>个下载劵</li>
+                        <li><span th:text="${seek.needGrade}">大二</span></li>
+                        <li>限<span th:text="${seek.seekTime}">三</span>天内</li>
+                        <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
+                        <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <div class="loadmore">
+            <button>加载更多</button>
+        </div>
+    </main>
+
+</body>
+</html>

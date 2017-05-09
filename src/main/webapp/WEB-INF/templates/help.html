@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——帮辅中心</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/help.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+    <style>
+        nav ul li:nth-child(4) a{
+            color: #ec6149;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="attention">
+        <p>进入所在学院，了解更精确的帮扶消息<a href='college.html' >更多学院&nbsp;&raquo;</a></p>
+        <ul  class="clearfloat">
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/sg.png}"/></li>
+                    <li>石工院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/jk.png}"/></li>
+                    <li>计科院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/dk.png}"/></li>
+                    <li>地科院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/jd.png}"/></li>
+                    <li>机电院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/hg.png}"/></li>
+                    <li>化工院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/lx.png}"/></li>
+                    <li>理学院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/cl.png}"/></li>
+                    <li>材料院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/ms.png}"/></li>
+                    <li>马院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/dq.png}"/></li>
+                    <li>电信院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/tm.png}"/></li>
+                    <li>土建院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/jg.png}"/></li>
+                    <li>经管院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/fx.png}"/></li>
+                    <li>法学院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/wy.png}"/></li>
+                    <li>外语院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/ty.png}"/></li>
+                    <li>体育院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/ys.png}"/></li>
+                    <li>艺术院</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li><img th:src="@{/static/img/pu.png}"/></li>
+                    <li>通用</li>
+                    <li><button>+进入</button></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <ul id="mainnav" class="clearfloat">
+        <li>大神聚集地</li>
+        <li>需要大神神助攻</li>
+        <li>我就是大神</li>
+        <li>我要找大神</li>
+    </ul>
+    <ul id="maincont">
+        <li id="manito">
+            <ul>
+
+                <li th:each="study,iterStat:${studys}">
+                    <ul>
+                        <li> <a href="#"><img th:src="@{/static/img/m1.jpg}"/><span class="name">甘球</span></a><time>昨天 11:32</time></li>
+                        <li th:text="${study.pubDescription}">我是计算机科学学院信息管理与信息系统专业的某某某，我擅长高数，如果你有需要，请联系我</li>
+                        <li>
+                            <ul class="clearfloat">
+                                <li>擅长学科：<span th:text="${study.studySubject}">高数</span></li>
+                                <li>绩点：<span th:text="${study.shareScore}">3.89</span></li>
+                                <li><span th:text="${study.pubGrade}">大二</span></li>
+                                <li><span th:text="${study.pubPhone}">tel:15247765587</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfloat">
+                                <li><span th:text="${study.academy}">计科院</span></li>
+                                <li><span th:text="${study.studySubject}">高数</span></li>
+                                <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
+                                <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                                <li><img th:src="@{/static/img/zan.png}"/><span>67</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <div class="loadmore">
+                <button>加载更多</button>
+            </div>
+        </li>
+        <li id="needmanito">
+            <ul>
+                <li  th:each="help,iterStat:${helps}">
+                    <ul>
+                        <li> <a href="#"><img th:src="@{/static/img/m2.jpg}"/></a><time>昨天 11:32</time></li>
+                        <li><p th:text="${help.helpNeed}">我是计算机科学学院信息管理与信息系统专业的某某某，我需要以为高数大神，请看到消息的大神联系我</p></li>
+                        <li>
+                            <ul class="clearfloat">
+                                <li>学科：<span th:text="${help.helpSubject}">高数</span></li>
+                                <li><span th:text="${help.pubGrade}">大二</span></li>
+                                <li><span th:text="${help.pubPhone}">tel:15247765587</span></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="clearfloat">
+                                <li><span th:text="${help.academy}">计科院</span></li>
+                                <li><span th:text="${help.helpSubject}">高数</span></li>
+                                <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
+                                <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                                <li><img th:src="@{/static/img/zan.png}"/><span>67</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <div class="loadmore">
+                <button>加载更多</button>
+            </div>
+
+        </li>
+        <li id="bemanito">
+            <form name="form7" th:object="${new_study}" th:action="@{/study_up}" method="post">
+                <input type="hidden" name="login_id" th:value="${login_id}"/>
+                <ul>
+                    <li>
+                        <label><span>*</span>学院：</label>
+                        <select th:field="*{academy}">
+                            <option value="学院" selected="selected">学院</option>
+
+                            <option value="石工院" >石工院</option>
+                            <option value="地科院">地科院</option>
+                            <option value="机电院">机电院</option>
+                            <option value="化工院">化工院</option>
+                            <option value="材料院">材料院</option>
+                            <option value="计科院">计科院</option>
+                            <option value="电信院">电信院</option>
+                            <option value="土建院">土建院</option>
+                            <option value="理学院">理学院</option>
+                            <option value="经管院">经管院</option>
+                            <option value="法学院">法学院</option>
+                            <option value="马院">马院</option>
+                            <option value="外语院">外语院</option>
+                            <option value="体育院">体育院</option>
+                            <option value="艺术院">艺术院</option>
+                            <option value="通用">通用</option>
+                        </select>
+
+                        <div class="manitotip">
+
+                        </div>
+                    </li>
+                    <li>
+                        <label><span>*</span>年级：</label>
+                        <select th:field="*{pubGrade}">
+                            <option value="0" selected="selected">年级</option>
+                            <option value="1">大一</option>
+                            <option value="2">大二</option>
+                            <option value="3">大三</option>
+                        </select>
+                        <div class="manitotip">
+
+                        </div>
+                    </li>
+                    <li>
+                        <label><span>*</span>学科：</label>
+                        <input type="text" th:field="*{studySubject}" placeholder="请填写你擅长的学科"/>
+                        <div class="manitotip">
+
+                        </div>
+                    </li>
+                    <li>
+                        <label><span>*</span>更多介绍：</label>
+                        <textarea  th:field="*{pubDescription}"></textarea>
+                        <div class="tip" id="tip1">描述下你自己，让更多人找到你~</div>
+                    </li>
+                    <li>
+                        <label><span>*</span>绩点：</label>
+                        <input th:field="*{shareScore}" type="text" />
+
+                    </li>
+                    <li>
+                        <label><span>*</span>联系方式：</label>
+                        <input type="text" th:field="*{pubPhone}" placeholder="请输入您的手机号或QQ号"/>
+                        <div class="manitotip">
+                        </div>
+                    </li>
+                </ul>
+                <div class="btn" >
+                    <input type="submit" value="发布"/>
+                </div>
+            </form>
+        </li>
+        <li id="seekmanito">
+            <form name="form8" th:object="${new_help}" th:action="@{/help_up}" method="post">
+                <input type="hidden" name="login_id" th:value="${login_id}"/>
+                <ul>
+                    <li>
+                        <label><span>*</span>学院：</label>
+                        <select th:field="*{academy}">
+                            <option value="学院">学院</option>
+
+                            <option value="石工院">石工院</option>
+                            <option value="地科院">地科院</option>
+                            <option value="机电院">机电院</option>
+                            <option value="化工院">化工院</option>
+                            <option value="材料院">材料院</option>
+                            <option value="计科院">计科院</option>
+                            <option value="电信院">电信院</option>
+                            <option value="土建院">土建院</option>
+                            <option value="理学院">理学院</option>
+                            <option value="经管院">经管院</option>
+                            <option value="法学院">法学院</option>
+                            <option value="马院">马院</option>
+                            <option value="外语院">外语院</option>
+                            <option value="体育院">体育院</option>
+                            <option value="艺术院">艺术院</option>
+                            <option value="通用">通用</option>
+                        </select>
+                        <div class="manitotip">
+
+                        </div>
+                    </li>
+                    <li>
+
+                        <label><span>*</span>年级：</label>
+                        <select th:field="*{pubGrade}">
+                            <option value="0">年级</option>
+                            <option value="1">大一</option>
+                            <option value="2">大二</option>
+                            <option value="3">大三</option>
+                        </select>
+                        <div class="manitotip">
+
+                        </div>
+                    </li>
+                    <li>
+                        <label><span>*</span>学科：</label>
+                        <input type="text" th:field="*{helpSubject}" placeholder="请填写你要补的学科"/>
+                        <div class="manitotip">
+
+                        </div>
+                    </li>
+                    <li>
+                        <label><span>*</span>具体要求：</label>
+                        <textarea th:field="*{helpNeed}"></textarea>
+                        <div class="tip" id="tip2">填写你要找的大神的一些基本要求，如：性别、绩点等</div>
+                    </li>
+                    <li>
+                        <label><span>*</span>联系方式：</label>
+                        <input type="text" th:field="*{pubPhone}" placeholder="请输入您的手机号或QQ号"/>
+                        <div class="manitotip">
+
+                        </div>
+                    </li>
+                </ul>
+                <div class="btn">
+                    <input type="submit" value="发布"/>
+                </div>
+            </form>
+        </li>
+    </ul>
+</main>
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/static/js/help.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+</body>
+</html>

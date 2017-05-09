@@ -1,0 +1,337 @@
+/*main*/
+/*main #imgslide*/
+#imgslide{
+    width:100%;
+    margin-top:65px;
+    position:relative;
+}
+#slideshow{
+    width:100%;
+    /*height:450px;*/
+    height:35vw;
+    overflow: hidden;
+    margin:0 auto;
+    position: relative;
+}
+#slideshow ul,#slideshow ul li{
+    position: absolute;
+    width:100%;
+}
+#slideshow ul li img{
+    width:100%;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+}
+#slideshow-nav{
+    position: absolute;
+    bottom:40px;
+    width:100%;
+    text-align: center;
+}
+#slideshow-nav span{
+    display: inline-block;
+    width:15px;
+    height:15px;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    margin:0 7px;
+    background-color: rgba(255,255,255,.3);
+    font-size:0;
+
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    cursor: pointer;
+    /*使圆点不能被选中*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#slideshow-nav span.active{
+    background: #fff;
+}
+/*#main*/
+#main{
+    width:100%;
+    margin-top:50px;
+}
+#maincenter,#mainright{
+    float: left;
+}
+#maincenter{
+    width:70%;
+}
+#mainright{
+    width:30%;
+}
+/*#main #maincenter*/
+#main #maincenter #college ul li{
+    margin-bottom:15px;
+    float: left;
+    width:16%;
+}
+#college ul li img{
+    width:30px;
+    vertical-align: middle;
+    margin-right:5px;
+}
+#college ul li span:hover{
+    color: #ec4c38;
+}
+#main #hot>ul>li{
+    padding-top:15px;
+    border-top:1px solid #eee;
+    margin-bottom:20px;
+}
+#main #hot ul li .conleft {
+    float: left;
+    width: 85%;
+}
+.conleft p{
+    font-size:0.9em;
+    line-height:1.6em;
+}
+#hot ul li .conright{
+    float: left;
+    width:15%;
+    padding-left:2%;
+    padding-right:4%;
+}
+#hot ul li .conright img{
+    width:100%;
+}
+#hot ul li .author{
+    font-size:0.9em;
+    margin-bottom: 10px;
+}
+#main #hot ul li .author img{
+    width:35px;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    vertical-align: middle;
+    margin-right:1.5%;
+}
+#hot ul li .author span{
+    padding-right:20px;
+}
+.author time{
+    color: rgba(0,0,0,0.5);
+}
+#hot ul li .content .conleft img{
+    width:20px;
+    vertical-align: middle;
+    padding-right:5px;
+}
+#hot ul li .content .conleft div img{
+    width:30px;
+}
+.conleft div a{
+    color:rgba(0,0,0,0.7);
+    font-weight:600;
+}
+.conleft div a:hover{
+    color:#ec4c38;
+}
+.conleft ul li{
+    float: left;
+    margin-right:4%;
+    font-size: 0.7em;
+    cursor: pointer;
+}
+.conleft ul li:nth-child(2){
+    cursor: auto;
+}
+.conleft ul li:first-child a{
+    display:inline-block;
+    color:#ec4c38;
+    border:1px solid #ec6f56;
+    padding:1px 3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
+.conleft ul li:first-child a:hover{
+    -webkit-box-shadow:0 0 1px #ec4c38 ;
+    -moz-box-shadow:0 0 1px #ec4c38 ;
+    box-shadow:0 0 1px #ec4c38;
+    background-color: #fbfff0;
+}
+.conleft ul li:hover span{
+    color: #ec4c38;
+}
+#main #maincenter #loadmore{
+    width:100%;
+}
+#main #maincenter #loadmore button{
+    display:inline-block;
+    width:90%;
+    padding:8px 0;
+    border:none;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    background-color:#ccc;
+    color: #fff;
+    font-size:1em;
+    cursor: pointer;
+    outline: none;
+}
+#main #maincenter #loadmore button:hover{
+    background-color: #bbb;
+}
+/*#main #mainright*/
+#upcommended,#uploading,#collect,#manito{
+    border:1px solid #eee;
+    padding:15px 0;
+    margin-bottom:10px;
+}
+#uploading>a,#collect a:last-child{
+    display:block;
+    width:80%;
+    padding:8px 0;
+    margin:0 auto;
+    text-align: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;;
+    background-color: #ec6149;
+    color: #fff4f3;
+}
+#uploading>a:hover,#collect a:last-child:hover{
+    background-color: #ec4a31;
+}
+#uploading a img{
+    width:20px;
+    margin-right:5px;
+    vertical-align: -1px;
+}
+#collect a:last-child img{
+    width:25px;
+    margin-right: 5px;
+    vertical-align:-5px;
+}
+#uploading p{
+    text-align: center;
+}
+#uploading>p>span,#collect>p>span{
+    color:#ec6149;
+    padding:0 3px;
+}
+#upcommended>a{
+    display: inline-block;
+    position: relative;
+    left:10%;
+}
+#upcommended>a:hover{
+    color: #ec4a31;
+}
+#upcommended>div,#upcommended>a,#collect>a:first-child,#collect>div{
+    width:80%;
+    margin:0 auto;
+    padding-bottom:5px;
+    border-bottom:1px dotted #aaa;
+}
+#upcommended>div{
+    margin-top:10px;
+    padding-bottom:10px;
+}
+#collect>a:first-child{
+    display: block;
+}
+#collect>a:first-child:hover{
+    color: #ec6149;
+}
+#collect>img{
+    width:30px;
+}
+#collect>div{
+    padding:15px 0;
+    text-align: center;
+}
+#upcommended>div>img,#collect>div img{
+    width:30px;
+    vertical-align: middle;
+    margin-right:5px;
+}
+#upcommended>div>span,#collect>div span{
+    font-size:1.1em;
+}
+#upcommended>div>p,#collect>div p{
+    font-size:0.8em;
+    text-align: center;
+}
+#collect>p{
+    text-align: center;
+    padding-top:15px;
+    padding-bottom:5px;
+    font-size:0.8em;
+}
+#manito>ul{
+    width:80%;
+    margin:0 auto;
+}
+#manito>ul>li{
+    margin-bottom:10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #ccc;
+}
+#manito>a{
+    display: block;
+    padding-left:10%;
+    margin-bottom:10px;
+}
+#manito>a:hover{
+    color: #ec6149;
+}
+#manito>ul>li .manleft{
+    width:20%;
+    float: left;
+}
+#manito>ul>li .manright{
+    width:80%;
+    float: left;
+}
+.manleft a img{
+    width:100%;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    padding-right:4%;
+}
+.manright>ul>li{
+    font-size:0.8em;
+}
+.manright>ul>li:first-child{
+    margin-bottom:3px;
+}
+.manright>ul>li:first-child a:hover{
+    color: #ec6149;
+}
+/*footer*/
+footer{
+    background-color: #ec6149;
+    padding:8px;
+}
+footer ul{
+    text-align: center;
+    margin:0 auto;
+}
+footer ul li:first-child,footer ul li a,footer p{
+    color: #fff0d7;
+    font-size: 0.9em;
+}
+footer ul li{
+    display: inline-block;
+    padding:3px 1%;
+}
+footer ul li a:hover{
+    color: #ffd3ab;
+}
+footer p{
+    text-align: center;
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——分享中心</title>
+
+    <!--KindEditor-->
+    <link rel="stylesheet" th:href="@{/static/kindeditor/themes/simple/simple.css}" />
+
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/share.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+    <style>
+        nav>ul:first-child li:nth-child(5) a{
+            color: #ec6149;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="sharenav">
+        方法分享<span>你的方法，全校人都想知道</span>
+    </div>
+    <form id="kindeditor" name="edit" th:object="${new_share}" th:action="@{/share_up}" method="post">
+
+        <input type="hidden" name="user_id" th:value="${user_id}"/>
+        <div>
+
+            <span>学院：</span>
+            <select th:field="*{academy}">
+                <option value="学院">学院</option>
+                <option value="石工院">石工院</option>
+                <option value="地科院">地科院</option>
+                <option value="机电院">机电院</option>
+                <option value="化工院">化工院</option>
+                <option value="材料院">材料院</option>
+                <option value="计科院">计科院</option>
+                <option value="电信院">电信院</option>
+                <option value="土建院">土建院</option>
+                <option value="理学院">理学院</option>
+                <option value="经管院">经管院</option>
+                <option value="法学院">法学院</option>
+                <option value="马院">马院</option>
+                <option value="外语院">外语院</option>
+                <option value="体育院">体育院</option>
+                <option value="艺术院">艺术院</option>
+                <option value="通用" selected="selected">通用</option>
+            </select>
+
+            <span>标题：</span><input type="text" th:field="*{sharingTitle}" placeholder="请输入您的文章标题"/>
+        </div>
+        <textarea id="textarea" th:field="*{sharingContent}" name="post" rows="20"></textarea>
+        <input  type="submit" value="发表"/>
+    </form>
+    <div id="wayshare">
+        <ul>
+
+            <li th:each="share,iterStat:${sharings}">
+                <div class="author">
+                    <img th:src="@{/static/img/h1.jpg}"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                </div>
+                <div class="content">
+                    <a th:href="@{'/share_detail/'+${share.id}}" th:text="${share.sharingTitle}">关于选课的一些建议</a><br/>
+                    <p th:utext="${share.sharingContent}">
+                        从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                    </p>
+                    <ul class="clearfloat">
+                        <li>计科院</li>
+                        <li><img th:src="@{/static/img/ll.png}"/><span th:text="${share.readingNumber}">200</span></li>
+                        <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                        <li><img th:src="@{/static/img/zan.png}"/><span th:text="${share.sharingPraise}">67</span></li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+        <div class="loadmore">
+            <button>加载更多</button>
+        </div>
+    </div>
+</main>
+
+
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+
+<!--文本多余内容进行省略-->
+<script>
+    $(function(){
+        $('.content>p').addClass('show');
+    })
+</script>
+
+<!--kindEditor-->
+<script charset="utf-8" th:src="@{/static/kindeditor/kindeditor-all-min.js}"></script>
+<script charset="utf-8" th:src="@{/static/kindeditor/lang/zh-CN.js}"></script>
+<script type="text/javascript">
+    var editor;
+    // 关闭过滤模式，保留所有标签
+    KindEditor.options.filterMode = false;
+    KindEditor.ready(function(K) {
+        editor = K.create('textarea', {
+            allowImageUpload : false,
+            themeType:'simple',
+            langType:'zh-CN',
+            items : [
+                'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',
+                'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+        });
+
+        // 取得HTML内容
+        html = editor.html();
+
+// 同步数据后可以直接取得textarea的value
+        editor.sync();
+        html = document.getElementById('textarea').value; // 原生API
+// 设置HTML内容
+//            editor.html('让更多人了解到您的心得体会');
+    });
+</script>
+</body>
+</html>

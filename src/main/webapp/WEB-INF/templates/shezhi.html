@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——设置</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/shezhi.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="get">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+
+<ul id="mainnav" class="clearfloat">
+    <li>个人设置</li>
+    <li>修改密码</li>
+</ul>
+<main>
+    <ul id="maincont">
+        <li id="basecont">
+            <form th:object="${user}" th:action="@{/user_upload}"
+                  enctype="multipart/form-data" method="post" >
+                <ul>
+                    <li>个人设置</li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li>头像</li>
+                            <li>
+                                <div id="imgdisplay">
+                                    <img th:src="${user.userImg}" alt="头像"/>
+                                </div>
+                                <label for="file"><span>点击选择</span></label>
+                                <input type="file" id="file" name="img"  style="display: none;"/>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li>昵称</li>
+                            <li>
+                                <input class="textinput" th:field="*{nickname}" type="text" placeholder="请输入您的昵称"/>
+                                <input type="hidden" th:field="*{id}"/>
+                                <input type="hidden" th:field="*{password}"/>
+                                <input type="hidden" th:field="*{studentId}"/>
+                                <input type="hidden" th:field="*{userImg}"/>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li>邮箱</li>
+                            <li>
+                                <input type="email" th:field="*{email}" class="textinput" placeholder="请输入您的邮箱"/>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul class="clearfloat">
+                            <li>个人介绍</li>
+                            <li>
+                                <input type="text" th:field="*{personalDesc}" class="textinput" placeholder="请输入您的个人介绍"/>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <input type="submit" value="提交"/>
+                    </li>
+
+                </ul>
+            </form>
+        </li>
+        <li id="pwdcont">
+            <form th:action="@{'/set_password/'+${user.id}}" method="post">
+                <ul>
+                    <li>修改密码</li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li>旧密码</li>
+                            <li>
+                                <input class="textinput" name="oldPassword" type="password" placeholder="输入当前密码"/>
+                            </li>
+                            <li><a href="#">忘记密码?</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li>新密码</li>
+                            <li>
+                                <input id="oldpwd" name="newPassword" class="textinput" type="password" placeholder="请设置6位及6位以上的新密码"/>
+                            </li>
+                        </ul>
+                        <div class="pwdtip"></div>
+                    </li>
+                    <li>
+                        <ul class="clearfloat">
+                            <li>确认新密码</li>
+                            <li>
+                                <input id="newpwd" class="textinput" name="repassword" type="password" placeholder="请重新输入新密码"/>
+                            </li>
+                        </ul>
+                        <div class="pwdtip"></div>
+                    </li>
+                    <li>
+                        <button type="submit">保存修改</button>
+                    </li>
+                </ul>
+            </form>
+        </li>
+    </ul>
+</main>
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:src="@{/static/js/common.js}"></script>
+<script th:src="@{/static/js/shezhi.js}"></script>
+<script>
+    document.getElementById('file').onchange = function() {
+        var imgFile = this.files[0];
+        var fr = new FileReader();
+        fr.onload = function() {
+            document.getElementById('imgdisplay').getElementsByTagName('img')[0].src = fr.result;
+        };
+        fr.readAsDataURL(imgFile);
+    };
+</script>
+
+</body>
+</html>

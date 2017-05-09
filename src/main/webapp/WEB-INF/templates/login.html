@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<link rel="shortcut icon" type="img/X-icon"  th:href="@{/static/img/login_logo.png}"/>
+	<title>易 考</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/static/css/log-on.css}"/>
+	<script type = "text/javascript" th:src ="@{/static/js/log_register.js}">
+	</script>
+</head>
+<body>
+<div class="clearfloat">
+	<div class="h1_div  col-4 ">
+		<h1 class="">易考</h1>
+	</div>
+	<div class="out_border col-4 ">
+		<h2>
+			<a id="log" th:href="@{/login}" >登录 </a> |
+			<a id="register" th:href="@{/regist}" >注册</a>
+		</h2>
+		<div id="log_div">
+			<p th:text="${#httpServletRequest.getParameter('error')}" style="display: block;text-align: center;"></p>
+			<form  id="login_form" th:action="@{/login}" method="post">
+				<input type="text" id="log_usernumber" placeholder="学号" name="student_id" required="required" onblur="logusernumber()"/>
+				<p id="log_remind_number">*全为数字且不能少于10位</p>
+
+				<input type="password" id="log_keywords"  placeholder="密码" name="password" required="required"  onblur="logkeywords()"/>
+				<p id="log_remind_keyword">*密码长度不符合要求</p>
+
+				<input type = "text" id = "input_code" autocomplete="off" placeholder="验证码" required="required" onblur="validate()"/>
+				<p id="log_remind_code">*验证码错误</p>
+
+				<input type = "button" id="Code" onclick="createCode();" />
+				<span onclick="createCode()" style="cursor: pointer;">看不清楚？换一张 ！</span><br/>
+				<input type="checkbox" name="" id="remember_key" value="checkbox" style="zoom:120%;"/>
+				<span  style="display: inline-block;">记住密码</span><a href="" id="forget_key">忘记密码?</a>
+				<input type="submit" name="" id="log_submit" onclick = "validate()" value="登&nbsp;&nbsp;&nbsp;录" />
+			</form>
+		</div>
+
+		<div id="register_div">
+			<form  id="" th:action="@{/regist}" method="post" th:object="${user}">
+				<input type="text" id="register_username" placeholder="昵称" th:field="*{nickname}" onblur="registerusername()"/>
+				<p id="register_remind_name">*请填写昵称</p>
+				<input type="text" id="register_usernumber" placeholder="学号" th:field="*{studentId}" required="required" onblur="registerusernumber()"/>
+				<p id="register_remind_number">*全为数字且不能少于10位</p>
+				<input type="password" id="register_keywords" placeholder="密码" th:field="*{password}" required="required" onblur="registerkeywords()"/>
+				<p id="register_remind_keyword">*密码至少为6位</p>
+				<!--<input type="text" id="telephone" placeholder="电话号码" th:field="*{phone}" required="required" onblur="tel()"/>
+                <p id="register_remind_tel">*电话号码错误</p>-->
+				<input type="text" id="re_email" placeholder="邮箱" th:field="*{email}" required="required" onblur="registeremail()"/>
+				<p id="register_remind_mail">*邮箱格式错误</p>
+				<input type="submit" name="" id="register_submit" value="注&nbsp;&nbsp;&nbsp;册" />
+			</form>
+		</div>
+	</div>
+	<div class="logo col-4">
+		<img th:src="@{/static/img/login_logo.png}"/>
+	</div>
+</div>
+<script th:src="@{/static/js/jquery-3.1.1.min.js}"></script>
+<script th:if="${regist} == 'true'">
+    $("#log_div").css("display","none");
+    $("#register_div").css("display","block");
+</script>
+</body>
+</html>
