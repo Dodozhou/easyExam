@@ -31,7 +31,6 @@ public class SeekController {
             return "redirect:/login";
         }else {
             model.addAttribute("seek", new DocSeek());
-            System.out.println(user.getId());
             model.addAttribute("publisher_id",user.getId());
             return "seekdoc";
         }
@@ -41,6 +40,9 @@ public class SeekController {
     public String seek(DocSeek seek,int publisher_id){
             seek.setPubDate(DateUtil.currentTime());
             seek.setPubId(publisher_id);
+            seek.setViewNumb(1);
+            seek.setCommentNumb(0);
+            seek.setPraiseNumb(0);
             repository.save(seek);
             return "success";
     }

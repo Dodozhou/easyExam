@@ -1,13 +1,12 @@
-package com.star.entity;
+package com.star.entity.show;
 
 import javax.persistence.*;
 
 /**
  * Created by hp on 2017/4/6.
  */
-@Entity
-@Table(name = "study_aid", schema = "yikao", catalog = "")
-public class StudyAid {
+
+public class StudyAidShow {
     public int id;             //帮贴id
     public int pubId;          //发布者id
     public int pubGrade;       //帮辅的年级
@@ -20,10 +19,9 @@ public class StudyAid {
     public int commentNumb;
     public int praiseNumb;
     public String time;
+    public String userPortrait;
 
 
-    @Id
-    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -32,8 +30,6 @@ public class StudyAid {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "pub_id", nullable = false)
     public int getPubId() {
         return pubId;
     }
@@ -42,8 +38,7 @@ public class StudyAid {
         this.pubId = pubId;
     }
 
-    @Basic
-    @Column(name = "pub_grade", nullable = false)
+
     public int getPubGrade() {
         return pubGrade;
     }
@@ -52,8 +47,7 @@ public class StudyAid {
         this.pubGrade = pubGrade;
     }
 
-    @Basic
-    @Column(name = "academy", nullable = false)
+
     public String getAcademy() {
         return academy;
     }
@@ -62,10 +56,6 @@ public class StudyAid {
         this.academy = academy;
     }
 
-
-
-    @Basic
-    @Column(name = "study_subject", nullable = false, length = 45)
     public String getStudySubject() {
         return studySubject;
     }
@@ -74,8 +64,7 @@ public class StudyAid {
         this.studySubject = studySubject;
     }
 
-    @Basic
-    @Column(name = "pub_description", nullable = false, length = 45)
+
     public String getPubDescription() {
         return pubDescription;
     }
@@ -84,8 +73,7 @@ public class StudyAid {
         this.pubDescription = pubDescription;
     }
 
-    @Basic
-    @Column(name = "share_score", nullable = false)
+
     public float getShareScore() {
         return shareScore;
     }
@@ -94,8 +82,7 @@ public class StudyAid {
         this.shareScore = shareScore;
     }
 
-    @Basic
-    @Column(name = "pub_phone", nullable = false)
+
     public String getPubPhone() {
         return pubPhone;
     }
@@ -103,8 +90,7 @@ public class StudyAid {
     public void setPubPhone(String pubPhone) {
         this.pubPhone = pubPhone;
     }
-    @Basic
-    @Column(name = "view_numb")
+
     public int getViewNumb() {
         return viewNumb;
     }
@@ -112,8 +98,7 @@ public class StudyAid {
     public void setViewNumb(int viewNumb) {
         this.viewNumb = viewNumb;
     }
-    @Basic
-    @Column(name = "comment_numb")
+
     public int getCommentNumb() {
         return commentNumb;
     }
@@ -121,8 +106,7 @@ public class StudyAid {
     public void setCommentNumb(int commentNumb) {
         this.commentNumb = commentNumb;
     }
-    @Basic
-    @Column(name = "time")
+
     public String getTime() {
         return time;
     }
@@ -130,13 +114,20 @@ public class StudyAid {
     public void setTime(String time) {
         this.time = time;
     }
-    @Basic
-    @Column(name = "praise_numb")
+
     public int getPraiseNumb() {
         return praiseNumb;
     }
 
     public void setPraiseNumb(int praiseNumb) {
         this.praiseNumb = praiseNumb;
+    }
+
+    public String getUserPortrait() {
+        return userPortrait;
+    }
+
+    public void setUserPortrait(String userPortrait) {
+        this.userPortrait = userPortrait;
     }
 }

@@ -1,4 +1,4 @@
-package com.star.entity;
+package com.star.entity.show;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "help_aid", schema = "yikao", catalog = "")
-public class HelpAid {
+public class HelpAidShow {
     public int id;            //该记录的id
     public int pubId;         //发布者的id
     public String academy;    //要帮辅科目所属的学院
@@ -19,6 +19,7 @@ public class HelpAid {
     public int commentNumb;
     public int praiseNumb;
     public String time;
+    public String userPortrait;
 
 
     @Id
@@ -126,5 +127,13 @@ public class HelpAid {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getUserPortrait() {
+        return userPortrait;
+    }
+
+    public void setUserPortrait(String userPortrait) {
+        this.userPortrait = userPortrait;
     }
 }
