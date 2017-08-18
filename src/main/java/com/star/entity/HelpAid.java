@@ -63,7 +63,7 @@ public class HelpAid {
     }
 
     @Basic
-    @Column(name = "help_subject", nullable = false, length = 45)
+    @Column(name = "help_subject", length = 45)
     public String getHelpSubject() {
         return helpSubject;
     }
@@ -83,7 +83,7 @@ public class HelpAid {
     }
 
     @Basic
-    @Column(name = "pub_phone", nullable = false)
+    @Column(name = "pub_phone")
     public String getPubPhone() {
         return pubPhone;
     }
@@ -92,7 +92,7 @@ public class HelpAid {
         this.pubPhone = pubPhone;
     }
     @Basic
-    @Column(name = "view_numb", nullable = false)
+    @Column(name = "view_numb")
     public int getViewNumb() {
         return viewNumb;
     }
@@ -101,7 +101,7 @@ public class HelpAid {
         this.viewNumb = viewNumb;
     }
     @Basic
-    @Column(name = "comment_numb", nullable = false)
+    @Column(name = "comment_numb")
     public int getCommentNumb() {
         return commentNumb;
     }
@@ -110,7 +110,7 @@ public class HelpAid {
         this.commentNumb = commentNumb;
     }
     @Basic
-    @Column(name = "praise_numb", nullable = false)
+    @Column(name = "praise_numb")
     public int getPraiseNumb() {
         return praiseNumb;
     }
@@ -119,7 +119,7 @@ public class HelpAid {
         this.praiseNumb = praiseNumb;
     }
     @Basic
-    @Column(name = "time", nullable = false)
+    @Column(name = "time")
     public String getTime() {
         return time;
     }

@@ -117,7 +117,7 @@
                         </div>
                         <div class="content clearfloat">
                             <div class="conleft">
-                                <div><img th:src="@{/static/img/word.png}"/><a href="#"><span th:text="${doc.dataTitle}"></span></a></div>
+                                <div><img th:src="@{/static/img/word.png}"/><a th:href="@{${doc.dataUrl}}"><span th:text="${doc.dataTitle}"></span></a></div>
                                 <p th:text="${doc.dataDescription}">
                                     从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
                                 </p>

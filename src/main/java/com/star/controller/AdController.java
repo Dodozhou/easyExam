@@ -86,9 +86,7 @@ public class AdController {
         DocSeek seek;
         while (iterator.hasNext()){
             seek=iterator.next();
-            System.out.println(seek.getSeekTitle());
             Copys.copy(seek,show);
-            System.out.println(show.getSeekTitle());
             User user=userRepository.findOne(seek.getPubId());
             show.setUserPortrait(user.getUserImg());
             shows.add(show);

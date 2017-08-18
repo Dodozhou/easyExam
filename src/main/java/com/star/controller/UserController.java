@@ -62,10 +62,12 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/regist"},method = RequestMethod.POST)
-    public String regist(User user, Model model){
+    public String regist(User user, Model model,HttpServletRequest request){
         user.setPersonalDesc("这个人很懒，什么都没有留下");
         user.setUserImg("/static/img/touxiang.png");
-        model.addAttribute("user",userRepository.save(user));
+        User user1=userRepository.save(user);
+        model.addAttribute("user",user1);
+        request.getSession().setAttribute("login_user",user1);
         return "personal";
     }
 

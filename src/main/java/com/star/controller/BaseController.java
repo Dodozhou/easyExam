@@ -14,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -37,4 +38,9 @@ public class BaseController {
         model.addAttribute("docs",dataShowUtil.dataTransport(baseDocs));
         return "index";
     }
+
+   /* @RequestMapping("/search")
+    public List<DataSharing> searchData(@RequestParam("key_words") String key){
+
+    }*/
 }
