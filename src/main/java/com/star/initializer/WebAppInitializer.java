@@ -34,7 +34,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
         registration.setMultipartConfig(
                 //这个location是临时保存文件的文件夹，不是真正保存的文件夹
-                new MultipartConfigElement("",2000000,10000000,0));
+                new MultipartConfigElement("",2000000,20000000,0));
     }
 
     //字符过滤器，解决中文乱码问题

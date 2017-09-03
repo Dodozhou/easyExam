@@ -172,9 +172,9 @@ function registeremail(){
 function WindowOnload(){
 	createCode();//在网页加载时就调用验证码函数
 	//禁用输入框
-	document.getElementById("log_keywords").disabled=true;
+	document.getElementById("log_keywords").disabled=false;
 	document.getElementById("input_code").disabled=true;
-	document.getElementById("register_keywords").disabled=true;
+	document.getElementById("register_keywords").disabled=false;
 	document.getElementById("telephone").disabled=true;
 	document.getElementById("re_email").disabled=true;
 }
