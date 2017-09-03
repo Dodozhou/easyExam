@@ -1,17 +1,109 @@
 <!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>搜索测试</title>
+    <meta charset="UTF-8" />
+    <title>易考——首页</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/common.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/index.css}"/>
+    <link rel="shortcut icon" th:href="@{/static/img/logo.png}" />
+    <style>
+        nav>ul:first-child li:nth-child(2) a{
+            color: #ec6149;
+        }
+    </style>
+    <!--为了兼容IE9以下版本浏览器需要加入一个google的JS，当然可以下载引人html-->
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
 </head>
 <body>
-    <ul>
-        <li th:each="data,iterStat:${datas}">
-        Title:<span th:text="${data.dataTitle}"></span><br/>
-            Content:<span th:text="${data.dataDescription}"></span><br/>
-        </li>
-    </ul>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" th:action="@{/search}" method="post">
+                    <input class='searinput' name="key_words" type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a th:href="@{/data/upload}" ><img th:src="@{/static/img/hup.png}"/>上传文档</a></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/regist}" >注册</a></span></li>
+            <li ><span th:if="${session.login_user} == null"><a th:href="@{/login}" >登录</a></span></li>
+            <!--改-->
+            <li th:if="${session.login_user} != null"><a th:href="@{'/personal/'+${session.login_user.id}}"><img th:src="@{${session.login_user.userImg}}"/></a>
+                <ul>
+                    <li><a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a></li>
+                    <li><a th:href="@{/logout}">退出登录</a></li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
 
+
+
+        <ul id="snav1" class="clearfloat">
+            <li><a th:href="@{/index}"><img th:src="@{/static/img/logo.png}"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a th:href="@{/index}">首页</a></li>
+            <li><a th:href="@{/exam_data}" >考试资料</a></li>
+            <li><a th:href="@{/help_center}" >帮辅中心</a></li>
+            <li><a th:href="@{/method_share}">方法分享</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/regist}">注册</a></li>
+            <li th:if="${session.login_user} == null"><a th:href="@{/login}">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li th:if="${session.login_user} != null">
+                <a>
+                    <img th:src="@{/static/img/per.png}"/> </a>
+                <a th:href="@{'/personal/'+${session.login_user.id}}">个人中心</a>
+                <span><a th:href="@{/logout}">退出</a></span>
+            </li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<main style="margin-top: 100px">
+    <div id="hot">
+        <ul>
+            <li th:each="doc,iterStat:${docs}">
+                <div class="author">
+                    <img th:src="@{${doc.ownerImg}}" height="20" width="20"/><span class="name" th:text="${doc.ownerName}">不凡大叔</span><time th:text="${doc.pubDate}">昨天17.51</time>
+                </div>
+                <div class="content clearfloat">
+                    <div class="conleft">
+                        <div><img th:src="@{/static/img/word.png}"/><a th:href="@{${doc.dataUrl}}"><span th:text="${doc.dataTitle}"></span></a></div>
+                        <p th:text="${doc.dataDescription}">
+                            从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                        </p>
+                        <ul>
+                            <li><a href="#"><span th:text="${doc.dataCollege}">通用</span></a></li>
+                            <li><span th:text="${doc.dataCategory}">概率与统计</span></li>
+                            <li><img th:src="@{/static/img/ll.png}"/><span th:text="${doc.viewNumber}">200</span></li>
+                            <!--<li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>-->
+                            <li><img th:src="@{/static/img/zan.png}"/><span th:text="${doc.dataPraise}">67</span></li>
+                            <li><img th:src="@{/static/img/xia.png}"/><span th:text="${doc.downloadNumber}">125</span></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</main>
 </body>
 </html>
