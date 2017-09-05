@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>易考——搜索结果</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
+    <link rel="shortcut icon" href="img/logo.png" />
+    <style>
+        nav>ul:first-child li:nth-child(2) a{
+            color: #ec6149;
+        }
+        main{
+            margin-top:100px;
+            width:78%;
+        }
+        #hot>ul>li{
+            padding-top:5px;
+            margin-bottom:5px;
+        }
+        #hot>ul>li:first-child{
+            border-top:none;
+        }
+    </style>
+    <!--为了兼容IE9以下版本浏览器需要加入一个google的JS，当然可以下载引人html-->
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header>
+    <nav class="clearfloat">
+        <ul>
+            <li class="except"><a href="index.html"><img src="img/logo.png"/><span>易考</span></a></li>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="college.html">考试资料</a></li>
+            <li><a href="help.html">帮辅中心</a></li>
+            <li><a href="share.html">方法分享</a></li>
+            <li class="except" id="search">
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+        </ul>
+        <ul class="clearfloat">
+            <li><a href="upload.html" target="_blank"><img src="img/hup.png"/>上传文档</a></li>
+            <li><a href="#">注册</a></li>
+            <li><a href="#">登录</a></li>
+
+            <!--改-->
+            <li><a href="personal.html"><img src="img/per.png"/></a>
+                <ul>
+                    <li><a href="personal.html">个人中心</a></li>
+                    <li>退出登录</li>
+                </ul>
+            </li>
+            <!--改-->
+        </ul>
+        <ul id="snav1" class="clearfloat">
+            <li><a href="index.html"><img src="img/logo.png"/><span>易考</span></a></li>
+            <li></li>
+        </ul>
+        <ul id="snav2">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="college.html">考试资料</a></li>
+            <li><a href="help.html">帮辅中心</a></li>
+            <li><a href="share.html">方法分享</a></li>
+            <li><a href="#">注册</a></li>
+            <li><a href="#">登录</a></li>
+            <li>
+                <form name="form1" action="" method="get">
+                    <input class='searinput' type="search" placeholder="Search"/>
+                </form>
+            </li>
+
+            <!--改-->
+            <li><a href="personal.html"><img src="img/per.png"/> </a><a href="personal.html">个人中心</a><span>退出</span></li>
+            <!--改-->
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="hot">
+        <ul>
+            <li>
+                <div class="author">
+                    <img src="img/h1.jpg"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                </div>
+                <div class="content clearfloat">
+                    <div class="conleft">
+                        <div><img src="img/word.png"/><a href="#">概率与统计复习资料</a></div>
+                        <p>
+                            从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                        </p>
+                        <ul>
+                            <li><a href="#">通用</a></li>
+                            <li>概率与统计</li>
+                            <li><img src="img/ll.png"/><span>200</span></li>
+                            <li><img src="img/pl.png"/><span>34</span></li>
+                            <li><img src="img/zan.png"/><span>67</span></li>
+                            <li><img src="img/xia.png"/><span>125</span></li>
+                        </ul>
+                    </div>
+                    <div class="conright">
+                        <img src="img/1.jpg"/>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="author">
+                    <img src="img/h1.jpg"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                </div>
+                <div class="content clearfloat">
+                    <div class="conleft">
+                        <div><img src="img/word.png"/><a href="#">概率与统计复习资料</a></div>
+                        <p>
+                            从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                        </p>
+                        <ul>
+                            <li><a href="#">通用</a></li>
+                            <li>概率与统计</li>
+                            <li><img src="img/ll.png"/><span>200</span></li>
+                            <li><img src="img/pl.png"/><span>34</span></li>
+                            <li><img src="img/zan.png"/><span>67</span></li>
+                            <li><img src="img/xia.png"/><span>125</span></li>
+                        </ul>
+                    </div>
+                    <div class="conright">
+                        <img src="img/1.jpg"/>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="author">
+                    <img src="img/h1.jpg"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                </div>
+                <div class="content clearfloat">
+                    <div class="conleft">
+                        <div><img src="img/word.png"/><a href="#">概率与统计复习资料</a></div>
+                        <p>
+                            从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
+                        </p>
+                        <ul>
+                            <li><a href="#">通用</a></li>
+                            <li>概率与统计</li>
+                            <li><img src="img/ll.png"/><span>200</span></li>
+                            <li><img src="img/pl.png"/><span>34</span></li>
+                            <li><img src="img/zan.png"/><span>67</span></li>
+                            <li><img src="img/xia.png"/><span>125</span></li>
+                        </ul>
+                    </div>
+                    <div class="conright">
+                        <img src="img/1.jpg"/>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+</main>
+
+<script src='js/jquery-3.1.1.min.js'></script>
+<script src="js/common.js"></script>
+</body>
+</html>

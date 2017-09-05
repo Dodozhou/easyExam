@@ -20,7 +20,15 @@ public class HelpAidShow {
     public int praiseNumb;
     public String time;
     public String userPortrait;
+    public String userName;
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     @Id
     @Column(name = "id", nullable = false)

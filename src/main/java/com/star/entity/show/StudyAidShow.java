@@ -7,20 +7,28 @@ import javax.persistence.*;
  */
 
 public class StudyAidShow {
-    public int id;             //帮贴id
-    public int pubId;          //发布者id
-    public int pubGrade;       //帮辅的年级
-    public String academy;      //帮辅所属的学院
-    public String studySubject;   //帮辅的科目
-    public String pubDescription;  //帮辅信息描述
-    public float shareScore;       //大神的学分绩点
-    public String pubPhone;    //大神的联系电话
-    public int viewNumb;
-    public int commentNumb;
-    public int praiseNumb;
-    public String time;
-    public String userPortrait;
+    private int id;             //帮贴id
+    private int pubId;          //发布者id
+    private int pubGrade;       //帮辅的年级
+    private String academy;      //帮辅所属的学院
+    private String studySubject;   //帮辅的科目
+    private String pubDescription;  //帮辅信息描述
+    private float shareScore;       //大神的学分绩点
+    private String pubPhone;    //大神的联系电话
+    private int viewNumb;
+    private int commentNumb;
+    private int praiseNumb;
+    private String time;
+    private String userPortrait;
+    private String userName;
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public int getId() {
         return id;

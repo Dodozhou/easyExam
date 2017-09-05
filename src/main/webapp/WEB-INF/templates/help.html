@@ -202,7 +202,7 @@
 
                 <li th:each="study,iterStat:${studys}">
                     <ul>
-                        <li> <a href="#"><img th:src="@{/static/img/m1.jpg}"/><span class="name">甘球</span></a><time>昨天 11:32</time></li>
+                        <li> <a href="#"><img th:src="@{${study.userPortrait}}"/><span class="name" th:text="${study.userName}">甘球</span></a><time th:text="${study.time}">昨天 11:32</time></li>
                         <li th:text="${study.pubDescription}">我是计算机科学学院信息管理与信息系统专业的某某某，我擅长高数，如果你有需要，请联系我</li>
                         <li>
                             <ul class="clearfloat">
@@ -233,7 +233,7 @@
             <ul>
                 <li  th:each="help,iterStat:${helps}">
                     <ul>
-                        <li> <a href="#"><img th:src="@{/static/img/m2.jpg}"/></a><time>昨天 11:32</time></li>
+                        <li> <a href="#"><img th:src="@{${help.userPortrait}}"/><span class="name" th:text="${help.userName}">甘球</span></a><time th:text="${help.time}">昨天 11:32</time></li>
                         <li><p th:text="${help.helpNeed}">我是计算机科学学院信息管理与信息系统专业的某某某，我需要以为高数大神，请看到消息的大神联系我</p></li>
                         <li>
                             <ul class="clearfloat">

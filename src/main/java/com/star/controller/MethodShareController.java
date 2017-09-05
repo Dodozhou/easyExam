@@ -27,7 +27,6 @@ public class MethodShareController {
             return "redirect:/login";
         }else {
             List<MethodSharing> sharings=shareRepository.findAll();
-            System.out.println(sharings.size());
             model.addAttribute("sharings",sharings);
             model.addAttribute("new_share", new MethodSharing());
             model.addAttribute("user_id", user.getId());
@@ -44,8 +43,8 @@ public class MethodShareController {
         new_share.setUserId(user.getId());
         MethodSharing sharing=shareRepository.save(new_share);
         shareRepository.flush();
-     /*return "redirect:/share_detail/"+sharing.getId();*/
-        return "redirect:/method_share";
+     return "redirect:/share_detail/"+sharing.getId();
+       /* return "redirect:/method_share";*/
 
     }
 
