@@ -66,6 +66,7 @@ public class UserController {
         user.setPersonalDesc("这个人很懒，什么都没有留下");
         user.setUserImg("/static/img/touxiang.png");
         User user1=userRepository.save(user);
+
         model.addAttribute("user",user1);
         request.getSession().setAttribute("login_user",user1);
         return "personal";

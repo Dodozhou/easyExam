@@ -116,7 +116,7 @@
 
             <li th:each="share,iterStat:${sharings}">
                 <div class="author">
-                    <img th:src="@{/static/img/h1.jpg}"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                    <img th:src="@{${share.userImg}}"/><span class="name" th:text="${share.userName}">不凡大叔</span><time th:text="${share.time}">昨天17.51</time>
                 </div>
                 <div class="content">
                     <a th:href="@{'/share_detail/'+${share.id}}" th:text="${share.sharingTitle}">关于选课的一些建议</a><br/>
@@ -126,7 +126,7 @@
                     <ul class="clearfloat">
                         <li>计科院</li>
                         <li><img th:src="@{/static/img/ll.png}"/><span th:text="${share.readingNumber}">200</span></li>
-                        <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                        <li><img th:src="@{/static/img/pl.png}"/><span>0</span></li>
                         <li><img th:src="@{/static/img/zan.png}"/><span th:text="${share.sharingPraise}">67</span></li>
                     </ul>
                 </div>

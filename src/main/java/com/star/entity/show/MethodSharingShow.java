@@ -1,12 +1,13 @@
 package com.star.entity.show;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 /**
  * Created by hp on 2017/4/6.
  */
-@Entity
-@Table(name = "method_sharing", schema = "yikao", catalog = "")
+@Component
 public class MethodSharingShow {
     private int id;              //分享博文的id
     private int userId;          //发布者的id
@@ -17,6 +18,10 @@ public class MethodSharingShow {
     private int sharingCriticism;  //踩次数
     private int readingNumber;    //浏览次数
     private String readingImgs;    //博文中图片的路径
+    private String time;          //发表时间
+
+    private String userImg;     //发表者的头像
+    private String userName;    //发表者的昵称
 
     @Id
     @Column(name = "id", nullable = false)
@@ -111,5 +116,29 @@ public class MethodSharingShow {
         this.readingImgs = readingImgs;
     }
 
+    @Basic
+    @Column(name="time")
+    public String getTime() {
+        return time;
+    }
 
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getUserImg() {
+        return userImg;
+    }
+
+    public void setUserImg(String userImg) {
+        this.userImg = userImg;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

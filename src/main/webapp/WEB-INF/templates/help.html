@@ -216,9 +216,9 @@
                             <ul class="clearfloat">
                                 <li><span th:text="${study.academy}">计科院</span></li>
                                 <li><span th:text="${study.studySubject}">高数</span></li>
-                                <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
-                                <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
-                                <li><img th:src="@{/static/img/zan.png}"/><span>67</span></li>
+                                <li><img th:src="@{/static/img/ll.png}"/><span th:text="${study.viewNumb}">200</span></li>
+                                <li><img th:src="@{/static/img/pl.png}"/><span th:text="${study.commentNumb}">34</span></li>
+                                <li><img th:src="@{/static/img/zan.png}"/><span th:text="${study.praiseNumb}">67</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -246,9 +246,9 @@
                             <ul class="clearfloat">
                                 <li><span th:text="${help.academy}">计科院</span></li>
                                 <li><span th:text="${help.helpSubject}">高数</span></li>
-                                <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
-                                <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
-                                <li><img th:src="@{/static/img/zan.png}"/><span>67</span></li>
+                                <li><img th:src="@{/static/img/ll.png}"/><span th:text="${help.viewNumb}">200</span></li>
+                                <li><img th:src="@{/static/img/pl.png}"/><span th:text="${help.commentNumb}">34</span></li>
+                                <li><img th:src="@{/static/img/zan.png}"/><span th:text="${help.praiseNumb}">67</span></li>
                             </ul>
                         </li>
                     </ul>

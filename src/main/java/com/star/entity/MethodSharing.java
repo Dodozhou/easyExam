@@ -17,9 +17,11 @@ public class MethodSharing {
     private int sharingCriticism;  //踩次数
     private int readingNumber;    //浏览次数
     private String readingImgs;    //博文中图片的路径
+    private String time;          //发表的时间
 
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -110,6 +112,13 @@ public class MethodSharing {
     public void setReadingImgs(String readingImgs) {
         this.readingImgs = readingImgs;
     }
+    @Basic
+    @Column(name="time",nullable=true)
+    public String getTime() {
+        return time;
+    }
 
-
+    public void setTime(String time) {
+        this.time = time;
+    }
 }

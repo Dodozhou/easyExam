@@ -1,12 +1,13 @@
 package com.star.entity.show;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 /**
  * Created by hp on 2017/4/6.
  */
-@Entity
-@Table(name = "help_aid", schema = "yikao", catalog = "")
+@Component
 public class HelpAidShow {
     public int id;            //该记录的id
     public int pubId;         //发布者的id
@@ -30,8 +31,7 @@ public class HelpAidShow {
         this.userName = userName;
     }
 
-    @Id
-    @Column(name = "id", nullable = false)
+
     public int getId() {
         return id;
     }
@@ -40,8 +40,7 @@ public class HelpAidShow {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "pub_id", nullable = false)
+
     public int getPubId() {
         return pubId;
     }
@@ -50,8 +49,7 @@ public class HelpAidShow {
         this.pubId = pubId;
     }
 
-    @Basic
-    @Column(name = "academy", nullable = false)
+
     public String getAcademy() {
         return academy;
     }
@@ -61,8 +59,7 @@ public class HelpAidShow {
     }
 
 
-    @Basic
-    @Column(name = "pub_grade", nullable = false)
+
     public int getPubGrade() {
         return pubGrade;
     }
@@ -71,8 +68,7 @@ public class HelpAidShow {
         this.pubGrade = pubGrade;
     }
 
-    @Basic
-    @Column(name = "help_subject", nullable = false, length = 45)
+
     public String getHelpSubject() {
         return helpSubject;
     }
@@ -81,8 +77,7 @@ public class HelpAidShow {
         this.helpSubject = helpSubject;
     }
 
-    @Basic
-    @Column(name = "help_need", nullable = true, length = 200)
+
     public String getHelpNeed() {
         return helpNeed;
     }
@@ -91,8 +86,7 @@ public class HelpAidShow {
         this.helpNeed = helpNeed;
     }
 
-    @Basic
-    @Column(name = "pub_phone", nullable = false)
+
     public String getPubPhone() {
         return pubPhone;
     }
@@ -100,8 +94,7 @@ public class HelpAidShow {
     public void setPubPhone(String pubPhone) {
         this.pubPhone = pubPhone;
     }
-    @Basic
-    @Column(name = "view_numb", nullable = false)
+
     public int getViewNumb() {
         return viewNumb;
     }
@@ -109,8 +102,7 @@ public class HelpAidShow {
     public void setViewNumb(int viewNumb) {
         this.viewNumb = viewNumb;
     }
-    @Basic
-    @Column(name = "comment_numb", nullable = false)
+
     public int getCommentNumb() {
         return commentNumb;
     }
@@ -118,8 +110,7 @@ public class HelpAidShow {
     public void setCommentNumb(int commentNumb) {
         this.commentNumb = commentNumb;
     }
-    @Basic
-    @Column(name = "praise_numb", nullable = false)
+
     public int getPraiseNumb() {
         return praiseNumb;
     }
@@ -127,8 +118,7 @@ public class HelpAidShow {
     public void setPraiseNumb(int praiseNumb) {
         this.praiseNumb = praiseNumb;
     }
-    @Basic
-    @Column(name = "time", nullable = false)
+
     public String getTime() {
         return time;
     }

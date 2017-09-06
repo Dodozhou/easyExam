@@ -1,11 +1,13 @@
 package com.star.entity.show;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 /**
  * Created by hp on 2017/4/8.
  */
-
+@Component
 public class DocSeekShow {
     public int id;           //悬赏记录的ID
     public int pubId;        //发布者的id

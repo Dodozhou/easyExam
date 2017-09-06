@@ -1,5 +1,7 @@
 package com.star.entity.show;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 /**
@@ -10,6 +12,7 @@ import javax.persistence.*;
 /**
  * 本类用作拼接分档分享页面中的用户信息和文档信息
  */
+@Component
 public class DataShow {
     private int id;            //文档的id
     private int userId;        //文档发布者id

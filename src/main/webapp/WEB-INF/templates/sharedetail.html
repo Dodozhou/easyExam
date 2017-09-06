@@ -77,17 +77,17 @@
         <div id="title"><span th:text="${share.sharingTitle}">关于选课的一些建议</span></div>
         <div id="author">
             <div id="authorimg">
-                <img th:src="@{/static/img/h1.jpg}" alt="作者"/>
+                <img th:src="@{${userImg}}" alt="作者"/>
             </div>
             <div id="authorinfo">
                 <ul class="clearfloat">
                     <li>作者</li>
-                    <li>不凡大叔</li>
+                    <li th:text="${userName}">不凡大叔</li>
                 </ul>
                 <ul class="clearfloat">
-                    <li>2017.04.02 12:34</li>
+                    <li th:text="${share.time}">2017.04.02 12:34</li>
                     <li>阅读&nbsp;<span th:text="${share.readingNumber}">234</span></li>
-                    <li>评论&nbsp;7</li>
+                    <li>评论&nbsp;0</li>
                     <li>喜欢&nbsp;<span th:text="${share.sharingPraise}">78</span></li>
                 </ul>
             </div>

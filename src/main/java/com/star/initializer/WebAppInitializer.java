@@ -2,7 +2,9 @@ package com.star.initializer;
 
 import com.star.config.RootConfig;
 import com.star.config.WebConfig;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.MultipartConfigElement;
@@ -34,7 +36,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
         registration.setMultipartConfig(
                 //这个location是临时保存文件的文件夹，不是真正保存的文件夹
-                new MultipartConfigElement("",2000000,20000000,0));
+                new MultipartConfigElement("",20000000,30000000,0));
+//        registration.setInitParameter("throwExceptionIfNoHandlerFo‌​und","true");
     }
 
     //字符过滤器，解决中文乱码问题
@@ -44,4 +47,6 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         servletContext.addFilter("name", new CharacterEncodingFilter("UTF-8", true))
                 .addMappingForUrlPatterns(null, false, "/*");
     }
+
+
 }

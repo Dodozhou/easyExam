@@ -3,6 +3,9 @@ package com.star.controller;
 import com.star.entity.MethodSharing;
 import com.star.entity.User;
 import com.star.repository.ShareRepository;
+import com.star.repository.UserRepository;
+import com.star.util.DateUtil;
+import com.star.util.MethodUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,11 @@ import java.util.List;
 public class MethodShareController {
     @Autowired
     ShareRepository shareRepository;
+    @Autowired
+    MethodUtil methodUtil;
+    @Autowired
+    UserRepository userRepository;
+
 
     @RequestMapping("/method_share")
     public String sharePage(Model model, HttpServletRequest request){
@@ -27,7 +35,7 @@ public class MethodShareController {
             return "redirect:/login";
         }else {
             List<MethodSharing> sharings=shareRepository.findAll();
-            model.addAttribute("sharings",sharings);
+            model.addAttribute("sharings",methodUtil.methodTransport(sharings));
             model.addAttribute("new_share", new MethodSharing());
             model.addAttribute("user_id", user.getId());
             return "share";
@@ -41,8 +49,9 @@ public class MethodShareController {
         new_share.setSharingCriticism(0);
         new_share.setSharingPraise(0);
         new_share.setUserId(user.getId());
-        MethodSharing sharing=shareRepository.save(new_share);
-        shareRepository.flush();
+        new_share.setTime(DateUtil.currentTime());
+        MethodSharing sharing=shareRepository.saveAndFlush(new_share);
+        System.out.println(sharing.getId());
      return "redirect:/share_detail/"+sharing.getId();
        /* return "redirect:/method_share";*/
 
@@ -50,10 +59,11 @@ public class MethodShareController {
 
     @RequestMapping("/share_detail/{share_id}")
     public String shareDetail(@PathVariable("share_id") int shareId,Model model){
-        MethodSharing methodSharing=shareRepository.findOne(shareId);
-        System.out.println(methodSharing.getSharingTitle());
-        System.out.println(methodSharing.getSharingContent());
-        model.addAttribute("share",methodSharing);
+        MethodSharing sharing=shareRepository.findOne(shareId);
+        User user=userRepository.findOne(sharing.getUserId());
+        model.addAttribute("userImg",user.getUserImg());
+        model.addAttribute("userName",user.getNickname());
+        model.addAttribute("share",sharing);
         return "sharedetail";
     }
 
