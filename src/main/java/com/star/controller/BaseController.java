@@ -1,24 +1,14 @@
 package com.star.controller;
 
 import com.star.entity.DataSharing;
-import com.star.entity.User;
-import com.star.entity.show.DataShow;
 import com.star.repository.DataSharingRepository;
-import com.star.repository.UserRepository;
 import com.star.util.DataShowUtil;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import javafx.scene.chart.PieChart;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -39,8 +29,4 @@ public class BaseController {
         return "index";
     }
 
-   /* @RequestMapping("/search")
-    public List<DataSharing> searchData(@RequestParam("key_words") String key){
-
-    }*/
 }
