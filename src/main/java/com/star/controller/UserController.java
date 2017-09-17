@@ -84,6 +84,7 @@ public class UserController {
         String url=imgPathUtil.saveImgs(request,img,"user");
         user.setUserImg(url);
         userRepository.save(user);
+        request.getSession().setAttribute("login_user",user);
         model.addAttribute("id",user.getId());
         return "redirect:/user_shezhi/{id}";
     }

@@ -4,6 +4,7 @@ import com.star.entity.DocSeek;
 import com.star.entity.User;
 import com.star.repository.DocSeekRepository;
 import com.star.util.DateUtil;
+import com.star.util.MapUtil;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ public class SeekController {
     DocSeekRepository repository;
     @Autowired
     DateUtil dateUtil;
+    @Autowired
+    MapUtil mapUtil;
 
     @RequestMapping(value = "/doc_seek",method = RequestMethod.GET)
     public String doc_seek(Model model,HttpServletRequest request){
@@ -49,7 +52,7 @@ public class SeekController {
 
     @RequestMapping("/seek_all")
     public String seek_all(Model model){
-        model.addAttribute("seeks",repository.findAll());
+        model.addAttribute("seeks",mapUtil.docSeekUtil(repository.findAll()));
         return "docsneed";
     }
 }

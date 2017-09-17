@@ -172,14 +172,14 @@ main #mainleft,main #mainright {
     padding-bottom:5px;
     border-bottom:1px solid #eee;
 }
-#filesleft>li:nth-child(3) form #search{
+#filesleft>li:nth-child(3) form .searinput{
     position: static;
     width:100px;
     transition: all .5s;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
 }
-#filesleft>li:nth-child(3) form #search:focus{
+#filesleft>li:nth-child(3) form .searinput:focus{
     width:120px;
 }
 #filesleft>li:nth-child(5){

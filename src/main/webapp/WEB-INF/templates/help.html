@@ -202,23 +202,23 @@
 
                 <li th:each="study,iterStat:${studys}">
                     <ul>
-                        <li> <a href="#"><img th:src="@{${study.userPortrait}}"/><span class="name" th:text="${study.userName}">甘球</span></a><time th:text="${study.time}">昨天 11:32</time></li>
-                        <li th:text="${study.pubDescription}">我是计算机科学学院信息管理与信息系统专业的某某某，我擅长高数，如果你有需要，请联系我</li>
+                        <li> <a href="#"><img th:src="@{${study.key.userImg}}"/><span class="name" th:text="${study.key.nickname}">甘球</span></a><time th:text="${study.value.time}">昨天 11:32</time></li>
+                        <li th:text="${study.value.pubDescription}">我是计算机科学学院信息管理与信息系统专业的某某某，我擅长高数，如果你有需要，请联系我</li>
                         <li>
                             <ul class="clearfloat">
-                                <li>擅长学科：<span th:text="${study.studySubject}">高数</span></li>
-                                <li>绩点：<span th:text="${study.shareScore}">3.89</span></li>
-                                <li><span th:text="${study.pubGrade}">大二</span></li>
-                                <li><span th:text="${study.pubPhone}">tel:15247765587</span></li>
+                                <li>擅长学科：<span th:text="${study.value.studySubject}">高数</span></li>
+                                <li>绩点：<span th:text="${study.value.shareScore}">3.89</span></li>
+                                <li><span th:text="${study.value.pubGrade}">大二</span></li>
+                                <li>tel:<span th:text="${study.value.pubPhone}">15247765587</span></li>
                             </ul>
                         </li>
                         <li>
                             <ul class="clearfloat">
-                                <li><span th:text="${study.academy}">计科院</span></li>
-                                <li><span th:text="${study.studySubject}">高数</span></li>
-                                <li><img th:src="@{/static/img/ll.png}"/><span th:text="${study.viewNumb}">200</span></li>
-                                <li><img th:src="@{/static/img/pl.png}"/><span th:text="${study.commentNumb}">34</span></li>
-                                <li><img th:src="@{/static/img/zan.png}"/><span th:text="${study.praiseNumb}">67</span></li>
+                                <li><span th:text="${study.value.academy}">计科院</span></li>
+                                <li><span th:text="${study.value.studySubject}">高数</span></li>
+                                <li><img th:src="@{/static/img/ll.png}"/><span th:text="${study.value.viewNumb}">200</span></li>
+                                <li><img th:src="@{/static/img/pl.png}"/><span th:text="${study.value.commentNumb}">34</span></li>
+                                <li><img th:src="@{/static/img/zan.png}"/><span th:text="${study.value.praiseNumb}">67</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -233,22 +233,22 @@
             <ul>
                 <li  th:each="help,iterStat:${helps}">
                     <ul>
-                        <li> <a href="#"><img th:src="@{${help.userPortrait}}"/><span class="name" th:text="${help.userName}">甘球</span></a><time th:text="${help.time}">昨天 11:32</time></li>
-                        <li><p th:text="${help.helpNeed}">我是计算机科学学院信息管理与信息系统专业的某某某，我需要以为高数大神，请看到消息的大神联系我</p></li>
+                        <li> <a href="#"><img th:src="@{${help.key.userImg}}"/><span class="name" th:text="${help.key.nickname}">甘球</span></a><time th:text="${help.value.time}">昨天 11:32</time></li>
+                        <li><p th:text="${help.value.helpNeed}">我是计算机科学学院信息管理与信息系统专业的某某某，我需要以为高数大神，请看到消息的大神联系我</p></li>
                         <li>
                             <ul class="clearfloat">
-                                <li>学科：<span th:text="${help.helpSubject}">高数</span></li>
-                                <li><span th:text="${help.pubGrade}">大二</span></li>
-                                <li><span th:text="${help.pubPhone}">tel:15247765587</span></li>
+                                <li>学科：<span th:text="${help.value.helpSubject}">高数</span></li>
+                                <li><span th:text="${help.value.pubGrade}">大二</span></li>
+                                <li>tel:<span th:text="${help.value.pubPhone}">15247765587</span></li>
                             </ul>
                         </li>
                         <li>
                             <ul class="clearfloat">
-                                <li><span th:text="${help.academy}">计科院</span></li>
-                                <li><span th:text="${help.helpSubject}">高数</span></li>
-                                <li><img th:src="@{/static/img/ll.png}"/><span th:text="${help.viewNumb}">200</span></li>
-                                <li><img th:src="@{/static/img/pl.png}"/><span th:text="${help.commentNumb}">34</span></li>
-                                <li><img th:src="@{/static/img/zan.png}"/><span th:text="${help.praiseNumb}">67</span></li>
+                                <li><span th:text="${help.value.academy}">计科院</span></li>
+                                <li><span th:text="${help.value.helpSubject}">高数</span></li>
+                                <li><img th:src="@{/static/img/ll.png}"/><span th:text="${help.value.viewNumb}">200</span></li>
+                                <li><img th:src="@{/static/img/pl.png}"/><span th:text="${help.value.commentNumb}">34</span></li>
+                                <li><img th:src="@{/static/img/zan.png}"/><span th:text="${help.value.praiseNumb}">67</span></li>
                             </ul>
                         </li>
                     </ul>

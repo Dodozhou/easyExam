@@ -5,6 +5,7 @@ import com.star.entity.User;
 import com.star.repository.DataSharingRepository;
 import com.star.util.DateUtil;
 import com.star.util.ImgPathUtil;
+import com.star.util.MapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,9 @@ public class DataController {
 
     @Autowired
     ImgPathUtil imgPathUtil;
+
+    @Autowired
+    MapUtil mapUtil;
 
     @RequestMapping(value = "/data/upload", method = RequestMethod.GET)
     public String uploadPage(Model model, HttpServletRequest request) {
@@ -73,8 +77,7 @@ public class DataController {
     public String collegeDetail(@PathVariable("college")String college,
                                 Model model) {
         List<DataSharing> sharings=dataRepository.findByDataCollege(college);
-        System.out.println(sharings.size());
-        model.addAttribute("sharings",sharings);
+        model.addAttribute("sharings",mapUtil.datasharingUtil(sharings));
         model.addAttribute("college",college);
         return "collegefile";
     }

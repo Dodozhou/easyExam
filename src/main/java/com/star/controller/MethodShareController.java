@@ -5,7 +5,7 @@ import com.star.entity.User;
 import com.star.repository.ShareRepository;
 import com.star.repository.UserRepository;
 import com.star.util.DateUtil;
-import com.star.util.MethodUtil;
+import com.star.util.MapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ public class MethodShareController {
     @Autowired
     ShareRepository shareRepository;
     @Autowired
-    MethodUtil methodUtil;
+    MapUtil mapUtil;
     @Autowired
     UserRepository userRepository;
 
@@ -35,7 +35,7 @@ public class MethodShareController {
             return "redirect:/login";
         }else {
             List<MethodSharing> sharings=shareRepository.findAll();
-            model.addAttribute("sharings",methodUtil.methodTransport(sharings));
+            model.addAttribute("sharings",mapUtil.methodUtil(sharings));
             model.addAttribute("new_share", new MethodSharing());
             model.addAttribute("user_id", user.getId());
             return "share";

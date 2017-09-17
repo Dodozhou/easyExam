@@ -1,36 +1,36 @@
 package com.star.controller;
 
 import com.star.entity.*;
-import com.star.entity.show.DocSeekShow;
-import com.star.entity.show.HelpAidShow;
-import com.star.entity.show.StudyAidShow;
 import com.star.repository.*;
-import com.star.util.Copys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by hp on 2017/4/11.
  */
 @RestController
 @RequestMapping("/ad")
-public class AdController {
+public class AdController {   //安卓接口
     @Autowired
+    private
     DataSharingRepository dataSharingRepository;
     @Autowired
+    private
     HelpAidRepository helpAidRepository;
     @Autowired
+    private
     StudyAidRepository studyAidRepository;
     @Autowired
+    private
     ShareRepository shareRepository;
     @Autowired
+    private
     DocSeekRepository docSeekRepository;
     @Autowired
+    private
     UserRepository userRepository;
 
     @RequestMapping("/data")
@@ -39,37 +39,25 @@ public class AdController {
     }
 
     @RequestMapping("/help_all")
-    public List<HelpAidShow> getHelp(){
-        List<HelpAidShow> shows=new LinkedList<HelpAidShow>();
+    public Map<User, HelpAid> getHelp(){
+        Map<User,HelpAid> uhmap=new HashMap<User, HelpAid>();
         List<HelpAid> helpAids=helpAidRepository.findAll();
-        Iterator<HelpAid> iterator=helpAids.iterator();
-        HelpAid aid;
-        HelpAidShow show=new HelpAidShow();
-        while (iterator.hasNext()){
-            aid=iterator.next();
-            Copys.copy(aid,show);
+        for (HelpAid aid: helpAids) {
             User user=userRepository.findOne(aid.getPubId());
-            show.setUserPortrait(user.getUserImg());
-            shows.add(show);
+            uhmap.put(user,aid);
         }
-        return shows;
+        return uhmap;
     }
 
     @RequestMapping("/study_all")
-    public List<StudyAidShow> getStudy(){
-        List<StudyAidShow> shows=new LinkedList<StudyAidShow>();
+    public Map<User, StudyAid> getStudy(){
+       Map<User,StudyAid> usmap=new HashMap<User, StudyAid>();
         List<StudyAid> studyAids=studyAidRepository.findAll();
-        Iterator<StudyAid> iterator=studyAids.iterator();
-        StudyAid aid;
-        StudyAidShow show=new StudyAidShow();
-        while (iterator.hasNext()){
-            aid=iterator.next();
-            Copys.copy(aid,show);
+        for (StudyAid aid :studyAids) {
             User user=userRepository.findOne(aid.getPubId());
-            show.setUserPortrait(user.getUserImg());
-            shows.add(show);
+            usmap.put(user,aid);
         }
-        return shows;
+        return usmap;
     }
 
     @RequestMapping("/method_all")
@@ -78,20 +66,14 @@ public class AdController {
     }
 
     @RequestMapping("/seek_all")
-    public List<DocSeekShow> getSeek(){
-        List<DocSeekShow> shows=new LinkedList<DocSeekShow>();
+    public Map<User, DocSeek> getSeek(){
+       Map<User,DocSeek> udmap=new HashMap<User, DocSeek>();
         List<DocSeek> docSeeks=docSeekRepository.findAll();
-        Iterator<DocSeek> iterator=docSeeks.iterator();
-        DocSeekShow show =new DocSeekShow();
-        DocSeek seek;
-        while (iterator.hasNext()){
-            seek=iterator.next();
-            Copys.copy(seek,show);
+        for (DocSeek seek: docSeeks) {
             User user=userRepository.findOne(seek.getPubId());
-            show.setUserPortrait(user.getUserImg());
-            shows.add(show);
+            udmap.put(user,seek);
         }
-        return shows;
+        return udmap;
     }
 
 }

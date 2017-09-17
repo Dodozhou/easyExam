@@ -6,7 +6,7 @@ import com.star.entity.User;
 import com.star.repository.HelpAidRepository;
 import com.star.repository.StudyAidRepository;
 import com.star.util.DateUtil;
-import com.star.util.HelpStudyUtil;
+import com.star.util.MapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +27,7 @@ public class HelpCenterController {
     @Autowired
     DateUtil dateUtil;
     @Autowired
-    HelpStudyUtil helpStudyUtil;
+    MapUtil mapUtil;
 
     @RequestMapping("/help_center")
     public String centerPage(Model model, HttpServletRequest request){
@@ -38,8 +38,8 @@ public class HelpCenterController {
         }
         else {
             model.addAttribute("login_id",user.getId());
-            model.addAttribute("helps", helpStudyUtil.helpTransport(helpRepository.findAll()));
-            model.addAttribute("studys", helpStudyUtil.studyTransport(studyRepository.findAll()));
+            model.addAttribute("helps", mapUtil.helpUtil(helpRepository.findAll()));
+            model.addAttribute("studys", mapUtil.studyUtil(studyRepository.findAll()));
             model.addAttribute("new_help", new HelpAid());
             model.addAttribute("new_study", new StudyAid());
             return "help";

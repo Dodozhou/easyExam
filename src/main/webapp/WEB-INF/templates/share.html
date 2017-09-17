@@ -116,18 +116,18 @@
 
             <li th:each="share,iterStat:${sharings}">
                 <div class="author">
-                    <img th:src="@{${share.userImg}}"/><span class="name" th:text="${share.userName}">不凡大叔</span><time th:text="${share.time}">昨天17.51</time>
+                    <img th:src="@{${share.key.userImg}}"/><span class="name" th:text="${share.key.nickname}">不凡大叔</span><time th:text="${share.value.time}">昨天17.51</time>
                 </div>
                 <div class="content">
-                    <a th:href="@{'/share_detail/'+${share.id}}" th:text="${share.sharingTitle}">关于选课的一些建议</a><br/>
-                    <p th:utext="${share.sharingContent}">
+                    <a th:href="@{'/share_detail/'+${share.value.id}}" th:text="${share.value.sharingTitle}">关于选课的一些建议</a><br/>
+                    <p th:utext="${share.value.sharingContent}">
                         从随机现象说起，在自然界和现实生活中，一些事物都是相互联系和不断发展的。在它们彼此间的联系和发展中，根据它们是否有必然的因果关系，可以分成截然不同的两大类：一类是确定性的现象。另一类是不确定性的现象。
                     </p>
                     <ul class="clearfloat">
                         <li>计科院</li>
-                        <li><img th:src="@{/static/img/ll.png}"/><span th:text="${share.readingNumber}">200</span></li>
+                        <li><img th:src="@{/static/img/ll.png}"/><span th:text="${share.value.readingNumber}">200</span></li>
                         <li><img th:src="@{/static/img/pl.png}"/><span>0</span></li>
-                        <li><img th:src="@{/static/img/zan.png}"/><span th:text="${share.sharingPraise}">67</span></li>
+                        <li><img th:src="@{/static/img/zan.png}"/><span th:text="${share.value.sharingPraise}">67</span></li>
                     </ul>
                 </div>
             </li>

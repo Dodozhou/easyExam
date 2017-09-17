@@ -2,9 +2,8 @@ package com.star.controller;
 
 import com.star.entity.DataSharing;
 import com.star.repository.DataSharingRepository;
-import com.star.util.DataShowUtil;
+import com.star.util.MapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ public class SearchController {
     @Autowired
     private DataSharingRepository dataSharingRepository;
     @Autowired
-    DataShowUtil dataShowUtil;
+    MapUtil mapUtil;
 
     @RequestMapping("/search")//这里只能用@RequestParam而不能用@Param，不知道为啥
     public String searchData(@RequestParam("key_words") String key, Model model){
@@ -33,7 +32,7 @@ public class SearchController {
         }
         key2=key2.concat("%");
         List<DataSharing> datas= dataSharingRepository.searchDataSharing(key2);
-        model.addAttribute("docs",dataShowUtil.dataTransport(datas));
-        return "STest";
+        model.addAttribute("docs",mapUtil.datasharingUtil(datas));
+        return "search_result";
     }
 }

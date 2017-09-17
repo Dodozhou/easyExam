@@ -83,20 +83,20 @@
         <ul id="docslist">
             <li th:each="seek,iterStat:${seeks}">
                 <div class="author">
-                    <img th:src="@{/static/img/h1.jpg}"/><span class="name">不凡大叔</span><time>昨天17.51</time>
+                    <img th:src="@{${seek.key.userImg}}"/><span class="name" th:text="${seek.key.nickname}">不凡大叔</span><time th:text="${seek.value.pubDate}">昨天17.51</time>
                 </div>
                 <div class="content">
-                    <span th:text="${seek.seekTitle}">运筹学课后习题答案</span>
-                    <p th:text="${seek.seekNeed}">
+                    <span th:text="${seek.value.seekTitle}">运筹学课后习题答案</span>
+                    <p th:text="${seek.value.seekNeed}">
                         要求文档为word文档格式、要有详细解析，对照运筹学课本
                     </p>
                     <ul class="clearfloat">
-                        <li><span th:text="${seek.needAcademy}">经管院</span></li>
-                        <li><span th:text="${seek.seekPraise}">2</span>个下载劵</li>
-                        <li><span th:text="${seek.needGrade}">大二</span></li>
-                        <li>限<span th:text="${seek.seekTime}">三</span>天内</li>
-                        <li><img th:src="@{/static/img/ll.png}"/><span>200</span></li>
-                        <li><img th:src="@{/static/img/pl.png}"/><span>34</span></li>
+                        <li><span th:text="${seek.value.needAcademy}">经管院</span></li>
+                        <li><span th:text="${seek.value.seekPraise}">2</span>个下载劵</li>
+                        <li><span th:text="${seek.value.needGrade}">大二</span></li>
+                        <li>限<span th:text="${seek.value.seekTime}">三</span>天内</li>
+                        <li><img th:src="@{/static/img/ll.png}"/><span th:text="${seek.value.viewNumb}">0</span></li>
+                        <li><img th:src="@{/static/img/pl.png}"/><span th:text="${seek.value.commentNumb}">0</span></li>
                     </ul>
                 </div>
             </li>

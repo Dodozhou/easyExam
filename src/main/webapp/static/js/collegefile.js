@@ -7,13 +7,17 @@ $(function(){
        $('#rightnav>li').removeClass('lihover');
        $(this).addClass('lihover');
     });
+
+    $('#rightcont>#rightnew').css('display','block');
+    $('#rightcont>#righthot').css('display','none');
+
     $('#rightnav>li:first-child').click(function(){
-       $('#rightcont>#rightnew').css('display','block');
-        $('#rightcont>#righthot').css('display','none');
+        $('#rightcont>ul').css('display','none');
+        $('#rightcont>#rightnew').css('display','block');
 
     });
     $('#rightnav>li:last-child').click(function(){
-        $('#rightcont>#rightnew').css('display','none');
+        $('#rightcont>ul').css('display','none');
         $('#rightcont>#righthot').css('display','block');
 
     });
